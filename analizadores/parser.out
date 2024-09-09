@@ -1,0 +1,1339 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DATE
+    DATETIME
+    DOUBLE
+    FINAL
+    INT
+    NUEVA_LINEA
+    PALABRA_CLAVE_ALTER
+    PALABRA_CLAVE_AND
+    PALABRA_CLAVE_BETWEEN
+    PALABRA_CLAVE_CREATE
+    PALABRA_CLAVE_DATABASE
+    PALABRA_CLAVE_DELETE
+    PALABRA_CLAVE_DROP
+    PALABRA_CLAVE_EXISTS
+    PALABRA_CLAVE_FOREIGN
+    PALABRA_CLAVE_HAVING
+    PALABRA_CLAVE_INSERT
+    PALABRA_CLAVE_INTO
+    PALABRA_CLAVE_KEY
+    PALABRA_CLAVE_LIKE
+    PALABRA_CLAVE_LIMIT
+    PALABRA_CLAVE_NOT
+    PALABRA_CLAVE_NULL
+    PALABRA_CLAVE_PRIMARY
+    PALABRA_CLAVE_SET
+    PALABRA_CLAVE_TABLE
+    PALABRA_CLAVE_TRUNCATE
+    PALABRA_CLAVE_UNION
+    PALABRA_CLAVE_UPDATE
+    PALABRA_CLAVE_USE
+    PALABRA_CLAVE_VALUES
+    TEXT
+    TIMESTAMP
+    TINYINT
+    TIPO_DATO
+    VARCHAR
+
+Grammar
+
+Rule 0     S' -> consulta
+Rule 1     consulta -> select_clause from_clause where_clause group_by
+Rule 2     consulta -> select_clause from_clause group_by
+Rule 3     consulta -> select_clause from_clause where_clause
+Rule 4     consulta -> select_clause from_clause
+Rule 5     consulta -> select_clause_sola
+Rule 6     group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo
+Rule 7     group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor
+Rule 8     group_by_valor -> ID
+Rule 9     group_by_valor -> ID COMA group_by_valor
+Rule 10    group_by_acomodo -> PALABRA_CLAVE_DESC
+Rule 11    group_by_acomodo -> PALABRA_CLAVE_ASC
+Rule 12    select_clause_sola -> PALABRA_CLAVE_SELECT valor
+Rule 13    select_clause -> PALABRA_CLAVE_SELECT campos
+Rule 14    campos -> campo
+Rule 15    campos -> campo COMA campos
+Rule 16    campo -> ID
+Rule 17    campo -> ID PALABRA_CLAVE_AS ID
+Rule 18    campo -> funcion_agregada
+Rule 19    campo -> funcion_agregada PALABRA_CLAVE_AS ID
+Rule 20    funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER
+Rule 21    funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER
+Rule 22    funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER
+Rule 23    funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER
+Rule 24    funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER
+Rule 25    expression -> ID
+Rule 26    expression -> NUMERO_ENTERO
+Rule 27    expression -> NUMERO_DECIMAL
+Rule 28    expression -> ID OPERADOR expression
+Rule 29    id_lista -> ID
+Rule 30    id_lista -> ID COMA id_lista
+Rule 31    from_clause -> PALABRA_CLAVE_FROM id_lista joins
+Rule 32    from_clause -> PALABRA_CLAVE_FROM id_lista
+Rule 33    joins -> join
+Rule 34    joins -> join joins
+Rule 35    join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID
+Rule 36    join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID
+Rule 37    join_type -> PALABRA_CLAVE_LEFT
+Rule 38    join_type -> PALABRA_CLAVE_RIGHT
+Rule 39    join_type -> PALABRA_CLAVE_FULL
+Rule 40    join_type -> PALABRA_CLAVE_INNER
+Rule 41    where_clause -> PALABRA_CLAVE_WHERE condicion
+Rule 42    condicion -> ID IGUAL datos
+Rule 43    condicion -> ID PALABRA_CLAVE_IN datos
+Rule 44    condicion -> ID COMPARADOR datos
+Rule 45    datos -> ID
+Rule 46    datos -> valor
+Rule 47    datos -> PAR_IZQ sub_consulta PAR_DER
+Rule 48    datos -> valor OPERADOR datos
+Rule 49    datos -> ID OPERADOR datos
+Rule 50    sub_consulta -> select_clause_sola_sub from_clause where_clause group_by
+Rule 51    sub_consulta -> select_clause_sola_sub from_clause group_by
+Rule 52    sub_consulta -> select_clause_sola_sub from_clause where_clause
+Rule 53    sub_consulta -> select_clause_sola_sub from_clause
+Rule 54    select_clause_sola_sub -> PALABRA_CLAVE_SELECT ID
+Rule 55    select_clause_sola_sub -> PALABRA_CLAVE_SELECT funcion_agregada
+Rule 56    valor -> NUMERO_ENTERO
+Rule 57    valor -> NUMERO_DECIMAL
+Rule 58    valor -> CADENA
+
+Terminals, with rules where they appear
+
+CADENA               : 58
+COMA                 : 9 15 30
+COMPARADOR           : 44
+DATE                 : 
+DATETIME             : 
+DOUBLE               : 
+FINAL                : 
+ID                   : 8 9 16 17 17 19 25 28 29 30 35 35 35 36 36 36 36 42 43 44 45 49 54
+IGUAL                : 35 36 42
+INT                  : 
+NUEVA_LINEA          : 
+NUMERO_DECIMAL       : 27 57
+NUMERO_ENTERO        : 26 56
+OPERADOR             : 28 48 49
+PALABRA_CLAVE_ALTER  : 
+PALABRA_CLAVE_AND    : 
+PALABRA_CLAVE_AS     : 17 19
+PALABRA_CLAVE_ASC    : 11
+PALABRA_CLAVE_AVG    : 20
+PALABRA_CLAVE_BETWEEN : 
+PALABRA_CLAVE_COUNT  : 23
+PALABRA_CLAVE_CREATE : 
+PALABRA_CLAVE_DATABASE : 
+PALABRA_CLAVE_DELETE : 
+PALABRA_CLAVE_DESC   : 10
+PALABRA_CLAVE_DROP   : 
+PALABRA_CLAVE_EXISTS : 
+PALABRA_CLAVE_FOREIGN : 
+PALABRA_CLAVE_FROM   : 31 32
+PALABRA_CLAVE_FULL   : 39
+PALABRA_CLAVE_GROUP_BY : 6 7
+PALABRA_CLAVE_HAVING : 
+PALABRA_CLAVE_IN     : 43
+PALABRA_CLAVE_INNER  : 40
+PALABRA_CLAVE_INSERT : 
+PALABRA_CLAVE_INTO   : 
+PALABRA_CLAVE_JOIN   : 35 36
+PALABRA_CLAVE_KEY    : 
+PALABRA_CLAVE_LEFT   : 37
+PALABRA_CLAVE_LIKE   : 
+PALABRA_CLAVE_LIMIT  : 
+PALABRA_CLAVE_MAX    : 21
+PALABRA_CLAVE_MIN    : 22
+PALABRA_CLAVE_NOT    : 
+PALABRA_CLAVE_NULL   : 
+PALABRA_CLAVE_ON     : 35 36
+PALABRA_CLAVE_PRIMARY : 
+PALABRA_CLAVE_RIGHT  : 38
+PALABRA_CLAVE_SELECT : 12 13 54 55
+PALABRA_CLAVE_SET    : 
+PALABRA_CLAVE_SUM    : 24
+PALABRA_CLAVE_TABLE  : 
+PALABRA_CLAVE_TRUNCATE : 
+PALABRA_CLAVE_UNION  : 
+PALABRA_CLAVE_UPDATE : 
+PALABRA_CLAVE_USE    : 
+PALABRA_CLAVE_VALUES : 
+PALABRA_CLAVE_WHERE  : 41
+PAR_DER              : 20 21 22 23 24 47
+PAR_IZQ              : 20 21 22 23 24 47
+TEXT                 : 
+TIMESTAMP            : 
+TINYINT              : 
+TIPO_DATO            : 
+VARCHAR              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+campo                : 14 15
+campos               : 13 15
+condicion            : 41
+consulta             : 0
+datos                : 42 43 44 48 49
+expression           : 20 21 22 23 24 28
+from_clause          : 1 2 3 4 50 51 52 53
+funcion_agregada     : 18 19 55
+group_by             : 1 2 50 51
+group_by_acomodo     : 6
+group_by_valor       : 6 7 9
+id_lista             : 30 31 32
+join                 : 33 34
+join_type            : 35 36
+joins                : 31 34
+select_clause        : 1 2 3 4
+select_clause_sola   : 5
+select_clause_sola_sub : 50 51 52 53
+sub_consulta         : 47
+valor                : 12 46 48
+where_clause         : 1 3 50 52
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . consulta
+    (1) consulta -> . select_clause from_clause where_clause group_by
+    (2) consulta -> . select_clause from_clause group_by
+    (3) consulta -> . select_clause from_clause where_clause
+    (4) consulta -> . select_clause from_clause
+    (5) consulta -> . select_clause_sola
+    (13) select_clause -> . PALABRA_CLAVE_SELECT campos
+    (12) select_clause_sola -> . PALABRA_CLAVE_SELECT valor
+
+    PALABRA_CLAVE_SELECT shift and go to state 4
+
+    consulta                       shift and go to state 1
+    select_clause                  shift and go to state 2
+    select_clause_sola             shift and go to state 3
+
+state 1
+
+    (0) S' -> consulta .
+
+
+
+state 2
+
+    (1) consulta -> select_clause . from_clause where_clause group_by
+    (2) consulta -> select_clause . from_clause group_by
+    (3) consulta -> select_clause . from_clause where_clause
+    (4) consulta -> select_clause . from_clause
+    (31) from_clause -> . PALABRA_CLAVE_FROM id_lista joins
+    (32) from_clause -> . PALABRA_CLAVE_FROM id_lista
+
+    PALABRA_CLAVE_FROM shift and go to state 6
+
+    from_clause                    shift and go to state 5
+
+state 3
+
+    (5) consulta -> select_clause_sola .
+
+    $end            reduce using rule 5 (consulta -> select_clause_sola .)
+
+
+state 4
+
+    (13) select_clause -> PALABRA_CLAVE_SELECT . campos
+    (12) select_clause_sola -> PALABRA_CLAVE_SELECT . valor
+    (14) campos -> . campo
+    (15) campos -> . campo COMA campos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+    (16) campo -> . ID
+    (17) campo -> . ID PALABRA_CLAVE_AS ID
+    (18) campo -> . funcion_agregada
+    (19) campo -> . funcion_agregada PALABRA_CLAVE_AS ID
+    (20) funcion_agregada -> . PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER
+    (21) funcion_agregada -> . PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER
+    (22) funcion_agregada -> . PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER
+    (23) funcion_agregada -> . PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER
+    (24) funcion_agregada -> . PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER
+
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+    ID              shift and go to state 13
+    PALABRA_CLAVE_AVG shift and go to state 15
+    PALABRA_CLAVE_MAX shift and go to state 16
+    PALABRA_CLAVE_MIN shift and go to state 17
+    PALABRA_CLAVE_COUNT shift and go to state 18
+    PALABRA_CLAVE_SUM shift and go to state 19
+
+    campos                         shift and go to state 7
+    valor                          shift and go to state 8
+    campo                          shift and go to state 9
+    funcion_agregada               shift and go to state 14
+
+state 5
+
+    (1) consulta -> select_clause from_clause . where_clause group_by
+    (2) consulta -> select_clause from_clause . group_by
+    (3) consulta -> select_clause from_clause . where_clause
+    (4) consulta -> select_clause from_clause .
+    (41) where_clause -> . PALABRA_CLAVE_WHERE condicion
+    (6) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo
+    (7) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor
+
+    $end            reduce using rule 4 (consulta -> select_clause from_clause .)
+    PALABRA_CLAVE_WHERE shift and go to state 22
+    PALABRA_CLAVE_GROUP_BY shift and go to state 23
+
+    where_clause                   shift and go to state 20
+    group_by                       shift and go to state 21
+
+state 6
+
+    (31) from_clause -> PALABRA_CLAVE_FROM . id_lista joins
+    (32) from_clause -> PALABRA_CLAVE_FROM . id_lista
+    (29) id_lista -> . ID
+    (30) id_lista -> . ID COMA id_lista
+
+    ID              shift and go to state 25
+
+    id_lista                       shift and go to state 24
+
+state 7
+
+    (13) select_clause -> PALABRA_CLAVE_SELECT campos .
+
+    PALABRA_CLAVE_FROM reduce using rule 13 (select_clause -> PALABRA_CLAVE_SELECT campos .)
+
+
+state 8
+
+    (12) select_clause_sola -> PALABRA_CLAVE_SELECT valor .
+
+    $end            reduce using rule 12 (select_clause_sola -> PALABRA_CLAVE_SELECT valor .)
+
+
+state 9
+
+    (14) campos -> campo .
+    (15) campos -> campo . COMA campos
+
+    PALABRA_CLAVE_FROM reduce using rule 14 (campos -> campo .)
+    COMA            shift and go to state 26
+
+
+state 10
+
+    (56) valor -> NUMERO_ENTERO .
+
+    $end            reduce using rule 56 (valor -> NUMERO_ENTERO .)
+    OPERADOR        reduce using rule 56 (valor -> NUMERO_ENTERO .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 56 (valor -> NUMERO_ENTERO .)
+    PAR_DER         reduce using rule 56 (valor -> NUMERO_ENTERO .)
+
+
+state 11
+
+    (57) valor -> NUMERO_DECIMAL .
+
+    $end            reduce using rule 57 (valor -> NUMERO_DECIMAL .)
+    OPERADOR        reduce using rule 57 (valor -> NUMERO_DECIMAL .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 57 (valor -> NUMERO_DECIMAL .)
+    PAR_DER         reduce using rule 57 (valor -> NUMERO_DECIMAL .)
+
+
+state 12
+
+    (58) valor -> CADENA .
+
+    $end            reduce using rule 58 (valor -> CADENA .)
+    OPERADOR        reduce using rule 58 (valor -> CADENA .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 58 (valor -> CADENA .)
+    PAR_DER         reduce using rule 58 (valor -> CADENA .)
+
+
+state 13
+
+    (16) campo -> ID .
+    (17) campo -> ID . PALABRA_CLAVE_AS ID
+
+    COMA            reduce using rule 16 (campo -> ID .)
+    PALABRA_CLAVE_FROM reduce using rule 16 (campo -> ID .)
+    PALABRA_CLAVE_AS shift and go to state 27
+
+
+state 14
+
+    (18) campo -> funcion_agregada .
+    (19) campo -> funcion_agregada . PALABRA_CLAVE_AS ID
+
+    COMA            reduce using rule 18 (campo -> funcion_agregada .)
+    PALABRA_CLAVE_FROM reduce using rule 18 (campo -> funcion_agregada .)
+    PALABRA_CLAVE_AS shift and go to state 28
+
+
+state 15
+
+    (20) funcion_agregada -> PALABRA_CLAVE_AVG . PAR_IZQ expression PAR_DER
+
+    PAR_IZQ         shift and go to state 29
+
+
+state 16
+
+    (21) funcion_agregada -> PALABRA_CLAVE_MAX . PAR_IZQ expression PAR_DER
+
+    PAR_IZQ         shift and go to state 30
+
+
+state 17
+
+    (22) funcion_agregada -> PALABRA_CLAVE_MIN . PAR_IZQ expression PAR_DER
+
+    PAR_IZQ         shift and go to state 31
+
+
+state 18
+
+    (23) funcion_agregada -> PALABRA_CLAVE_COUNT . PAR_IZQ expression PAR_DER
+
+    PAR_IZQ         shift and go to state 32
+
+
+state 19
+
+    (24) funcion_agregada -> PALABRA_CLAVE_SUM . PAR_IZQ expression PAR_DER
+
+    PAR_IZQ         shift and go to state 33
+
+
+state 20
+
+    (1) consulta -> select_clause from_clause where_clause . group_by
+    (3) consulta -> select_clause from_clause where_clause .
+    (6) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo
+    (7) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor
+
+    $end            reduce using rule 3 (consulta -> select_clause from_clause where_clause .)
+    PALABRA_CLAVE_GROUP_BY shift and go to state 23
+
+    group_by                       shift and go to state 34
+
+state 21
+
+    (2) consulta -> select_clause from_clause group_by .
+
+    $end            reduce using rule 2 (consulta -> select_clause from_clause group_by .)
+
+
+state 22
+
+    (41) where_clause -> PALABRA_CLAVE_WHERE . condicion
+    (42) condicion -> . ID IGUAL datos
+    (43) condicion -> . ID PALABRA_CLAVE_IN datos
+    (44) condicion -> . ID COMPARADOR datos
+
+    ID              shift and go to state 36
+
+    condicion                      shift and go to state 35
+
+state 23
+
+    (6) group_by -> PALABRA_CLAVE_GROUP_BY . group_by_valor group_by_acomodo
+    (7) group_by -> PALABRA_CLAVE_GROUP_BY . group_by_valor
+    (8) group_by_valor -> . ID
+    (9) group_by_valor -> . ID COMA group_by_valor
+
+    ID              shift and go to state 38
+
+    group_by_valor                 shift and go to state 37
+
+state 24
+
+    (31) from_clause -> PALABRA_CLAVE_FROM id_lista . joins
+    (32) from_clause -> PALABRA_CLAVE_FROM id_lista .
+    (33) joins -> . join
+    (34) joins -> . join joins
+    (35) join -> . join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID
+    (36) join -> . join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID
+    (37) join_type -> . PALABRA_CLAVE_LEFT
+    (38) join_type -> . PALABRA_CLAVE_RIGHT
+    (39) join_type -> . PALABRA_CLAVE_FULL
+    (40) join_type -> . PALABRA_CLAVE_INNER
+
+    PALABRA_CLAVE_WHERE reduce using rule 32 (from_clause -> PALABRA_CLAVE_FROM id_lista .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 32 (from_clause -> PALABRA_CLAVE_FROM id_lista .)
+    $end            reduce using rule 32 (from_clause -> PALABRA_CLAVE_FROM id_lista .)
+    PAR_DER         reduce using rule 32 (from_clause -> PALABRA_CLAVE_FROM id_lista .)
+    PALABRA_CLAVE_LEFT shift and go to state 42
+    PALABRA_CLAVE_RIGHT shift and go to state 43
+    PALABRA_CLAVE_FULL shift and go to state 44
+    PALABRA_CLAVE_INNER shift and go to state 45
+
+    joins                          shift and go to state 39
+    join                           shift and go to state 40
+    join_type                      shift and go to state 41
+
+state 25
+
+    (29) id_lista -> ID .
+    (30) id_lista -> ID . COMA id_lista
+
+    PALABRA_CLAVE_LEFT reduce using rule 29 (id_lista -> ID .)
+    PALABRA_CLAVE_RIGHT reduce using rule 29 (id_lista -> ID .)
+    PALABRA_CLAVE_FULL reduce using rule 29 (id_lista -> ID .)
+    PALABRA_CLAVE_INNER reduce using rule 29 (id_lista -> ID .)
+    PALABRA_CLAVE_WHERE reduce using rule 29 (id_lista -> ID .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 29 (id_lista -> ID .)
+    $end            reduce using rule 29 (id_lista -> ID .)
+    PAR_DER         reduce using rule 29 (id_lista -> ID .)
+    COMA            shift and go to state 46
+
+
+state 26
+
+    (15) campos -> campo COMA . campos
+    (14) campos -> . campo
+    (15) campos -> . campo COMA campos
+    (16) campo -> . ID
+    (17) campo -> . ID PALABRA_CLAVE_AS ID
+    (18) campo -> . funcion_agregada
+    (19) campo -> . funcion_agregada PALABRA_CLAVE_AS ID
+    (20) funcion_agregada -> . PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER
+    (21) funcion_agregada -> . PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER
+    (22) funcion_agregada -> . PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER
+    (23) funcion_agregada -> . PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER
+    (24) funcion_agregada -> . PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER
+
+    ID              shift and go to state 13
+    PALABRA_CLAVE_AVG shift and go to state 15
+    PALABRA_CLAVE_MAX shift and go to state 16
+    PALABRA_CLAVE_MIN shift and go to state 17
+    PALABRA_CLAVE_COUNT shift and go to state 18
+    PALABRA_CLAVE_SUM shift and go to state 19
+
+    campo                          shift and go to state 9
+    campos                         shift and go to state 47
+    funcion_agregada               shift and go to state 14
+
+state 27
+
+    (17) campo -> ID PALABRA_CLAVE_AS . ID
+
+    ID              shift and go to state 48
+
+
+state 28
+
+    (19) campo -> funcion_agregada PALABRA_CLAVE_AS . ID
+
+    ID              shift and go to state 49
+
+
+state 29
+
+    (20) funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ . expression PAR_DER
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 50
+
+state 30
+
+    (21) funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ . expression PAR_DER
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 54
+
+state 31
+
+    (22) funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ . expression PAR_DER
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 55
+
+state 32
+
+    (23) funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ . expression PAR_DER
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 56
+
+state 33
+
+    (24) funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ . expression PAR_DER
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 57
+
+state 34
+
+    (1) consulta -> select_clause from_clause where_clause group_by .
+
+    $end            reduce using rule 1 (consulta -> select_clause from_clause where_clause group_by .)
+
+
+state 35
+
+    (41) where_clause -> PALABRA_CLAVE_WHERE condicion .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 41 (where_clause -> PALABRA_CLAVE_WHERE condicion .)
+    $end            reduce using rule 41 (where_clause -> PALABRA_CLAVE_WHERE condicion .)
+    PAR_DER         reduce using rule 41 (where_clause -> PALABRA_CLAVE_WHERE condicion .)
+
+
+state 36
+
+    (42) condicion -> ID . IGUAL datos
+    (43) condicion -> ID . PALABRA_CLAVE_IN datos
+    (44) condicion -> ID . COMPARADOR datos
+
+    IGUAL           shift and go to state 58
+    PALABRA_CLAVE_IN shift and go to state 59
+    COMPARADOR      shift and go to state 60
+
+
+state 37
+
+    (6) group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor . group_by_acomodo
+    (7) group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor .
+    (10) group_by_acomodo -> . PALABRA_CLAVE_DESC
+    (11) group_by_acomodo -> . PALABRA_CLAVE_ASC
+
+    $end            reduce using rule 7 (group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor .)
+    PAR_DER         reduce using rule 7 (group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor .)
+    PALABRA_CLAVE_DESC shift and go to state 62
+    PALABRA_CLAVE_ASC shift and go to state 63
+
+    group_by_acomodo               shift and go to state 61
+
+state 38
+
+    (8) group_by_valor -> ID .
+    (9) group_by_valor -> ID . COMA group_by_valor
+
+    PALABRA_CLAVE_DESC reduce using rule 8 (group_by_valor -> ID .)
+    PALABRA_CLAVE_ASC reduce using rule 8 (group_by_valor -> ID .)
+    $end            reduce using rule 8 (group_by_valor -> ID .)
+    PAR_DER         reduce using rule 8 (group_by_valor -> ID .)
+    COMA            shift and go to state 64
+
+
+state 39
+
+    (31) from_clause -> PALABRA_CLAVE_FROM id_lista joins .
+
+    PALABRA_CLAVE_WHERE reduce using rule 31 (from_clause -> PALABRA_CLAVE_FROM id_lista joins .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 31 (from_clause -> PALABRA_CLAVE_FROM id_lista joins .)
+    $end            reduce using rule 31 (from_clause -> PALABRA_CLAVE_FROM id_lista joins .)
+    PAR_DER         reduce using rule 31 (from_clause -> PALABRA_CLAVE_FROM id_lista joins .)
+
+
+state 40
+
+    (33) joins -> join .
+    (34) joins -> join . joins
+    (33) joins -> . join
+    (34) joins -> . join joins
+    (35) join -> . join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID
+    (36) join -> . join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID
+    (37) join_type -> . PALABRA_CLAVE_LEFT
+    (38) join_type -> . PALABRA_CLAVE_RIGHT
+    (39) join_type -> . PALABRA_CLAVE_FULL
+    (40) join_type -> . PALABRA_CLAVE_INNER
+
+    PALABRA_CLAVE_WHERE reduce using rule 33 (joins -> join .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 33 (joins -> join .)
+    $end            reduce using rule 33 (joins -> join .)
+    PAR_DER         reduce using rule 33 (joins -> join .)
+    PALABRA_CLAVE_LEFT shift and go to state 42
+    PALABRA_CLAVE_RIGHT shift and go to state 43
+    PALABRA_CLAVE_FULL shift and go to state 44
+    PALABRA_CLAVE_INNER shift and go to state 45
+
+    join                           shift and go to state 40
+    joins                          shift and go to state 65
+    join_type                      shift and go to state 41
+
+state 41
+
+    (35) join -> join_type . PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID
+    (36) join -> join_type . PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID
+
+    PALABRA_CLAVE_JOIN shift and go to state 66
+
+
+state 42
+
+    (37) join_type -> PALABRA_CLAVE_LEFT .
+
+    PALABRA_CLAVE_JOIN reduce using rule 37 (join_type -> PALABRA_CLAVE_LEFT .)
+
+
+state 43
+
+    (38) join_type -> PALABRA_CLAVE_RIGHT .
+
+    PALABRA_CLAVE_JOIN reduce using rule 38 (join_type -> PALABRA_CLAVE_RIGHT .)
+
+
+state 44
+
+    (39) join_type -> PALABRA_CLAVE_FULL .
+
+    PALABRA_CLAVE_JOIN reduce using rule 39 (join_type -> PALABRA_CLAVE_FULL .)
+
+
+state 45
+
+    (40) join_type -> PALABRA_CLAVE_INNER .
+
+    PALABRA_CLAVE_JOIN reduce using rule 40 (join_type -> PALABRA_CLAVE_INNER .)
+
+
+state 46
+
+    (30) id_lista -> ID COMA . id_lista
+    (29) id_lista -> . ID
+    (30) id_lista -> . ID COMA id_lista
+
+    ID              shift and go to state 25
+
+    id_lista                       shift and go to state 67
+
+state 47
+
+    (15) campos -> campo COMA campos .
+
+    PALABRA_CLAVE_FROM reduce using rule 15 (campos -> campo COMA campos .)
+
+
+state 48
+
+    (17) campo -> ID PALABRA_CLAVE_AS ID .
+
+    COMA            reduce using rule 17 (campo -> ID PALABRA_CLAVE_AS ID .)
+    PALABRA_CLAVE_FROM reduce using rule 17 (campo -> ID PALABRA_CLAVE_AS ID .)
+
+
+state 49
+
+    (19) campo -> funcion_agregada PALABRA_CLAVE_AS ID .
+
+    COMA            reduce using rule 19 (campo -> funcion_agregada PALABRA_CLAVE_AS ID .)
+    PALABRA_CLAVE_FROM reduce using rule 19 (campo -> funcion_agregada PALABRA_CLAVE_AS ID .)
+
+
+state 50
+
+    (20) funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression . PAR_DER
+
+    PAR_DER         shift and go to state 68
+
+
+state 51
+
+    (25) expression -> ID .
+    (28) expression -> ID . OPERADOR expression
+
+    PAR_DER         reduce using rule 25 (expression -> ID .)
+    OPERADOR        shift and go to state 69
+
+
+state 52
+
+    (26) expression -> NUMERO_ENTERO .
+
+    PAR_DER         reduce using rule 26 (expression -> NUMERO_ENTERO .)
+
+
+state 53
+
+    (27) expression -> NUMERO_DECIMAL .
+
+    PAR_DER         reduce using rule 27 (expression -> NUMERO_DECIMAL .)
+
+
+state 54
+
+    (21) funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression . PAR_DER
+
+    PAR_DER         shift and go to state 70
+
+
+state 55
+
+    (22) funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression . PAR_DER
+
+    PAR_DER         shift and go to state 71
+
+
+state 56
+
+    (23) funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression . PAR_DER
+
+    PAR_DER         shift and go to state 72
+
+
+state 57
+
+    (24) funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression . PAR_DER
+
+    PAR_DER         shift and go to state 73
+
+
+state 58
+
+    (42) condicion -> ID IGUAL . datos
+    (45) datos -> . ID
+    (46) datos -> . valor
+    (47) datos -> . PAR_IZQ sub_consulta PAR_DER
+    (48) datos -> . valor OPERADOR datos
+    (49) datos -> . ID OPERADOR datos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+
+    ID              shift and go to state 74
+    PAR_IZQ         shift and go to state 77
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    datos                          shift and go to state 75
+    valor                          shift and go to state 76
+
+state 59
+
+    (43) condicion -> ID PALABRA_CLAVE_IN . datos
+    (45) datos -> . ID
+    (46) datos -> . valor
+    (47) datos -> . PAR_IZQ sub_consulta PAR_DER
+    (48) datos -> . valor OPERADOR datos
+    (49) datos -> . ID OPERADOR datos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+
+    ID              shift and go to state 74
+    PAR_IZQ         shift and go to state 77
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    datos                          shift and go to state 78
+    valor                          shift and go to state 76
+
+state 60
+
+    (44) condicion -> ID COMPARADOR . datos
+    (45) datos -> . ID
+    (46) datos -> . valor
+    (47) datos -> . PAR_IZQ sub_consulta PAR_DER
+    (48) datos -> . valor OPERADOR datos
+    (49) datos -> . ID OPERADOR datos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+
+    ID              shift and go to state 74
+    PAR_IZQ         shift and go to state 77
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    datos                          shift and go to state 79
+    valor                          shift and go to state 76
+
+state 61
+
+    (6) group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo .
+
+    $end            reduce using rule 6 (group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo .)
+    PAR_DER         reduce using rule 6 (group_by -> PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo .)
+
+
+state 62
+
+    (10) group_by_acomodo -> PALABRA_CLAVE_DESC .
+
+    $end            reduce using rule 10 (group_by_acomodo -> PALABRA_CLAVE_DESC .)
+    PAR_DER         reduce using rule 10 (group_by_acomodo -> PALABRA_CLAVE_DESC .)
+
+
+state 63
+
+    (11) group_by_acomodo -> PALABRA_CLAVE_ASC .
+
+    $end            reduce using rule 11 (group_by_acomodo -> PALABRA_CLAVE_ASC .)
+    PAR_DER         reduce using rule 11 (group_by_acomodo -> PALABRA_CLAVE_ASC .)
+
+
+state 64
+
+    (9) group_by_valor -> ID COMA . group_by_valor
+    (8) group_by_valor -> . ID
+    (9) group_by_valor -> . ID COMA group_by_valor
+
+    ID              shift and go to state 38
+
+    group_by_valor                 shift and go to state 80
+
+state 65
+
+    (34) joins -> join joins .
+
+    PALABRA_CLAVE_WHERE reduce using rule 34 (joins -> join joins .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 34 (joins -> join joins .)
+    $end            reduce using rule 34 (joins -> join joins .)
+    PAR_DER         reduce using rule 34 (joins -> join joins .)
+
+
+state 66
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN . ID PALABRA_CLAVE_ON ID IGUAL ID
+    (36) join -> join_type PALABRA_CLAVE_JOIN . ID ID PALABRA_CLAVE_ON ID IGUAL ID
+
+    ID              shift and go to state 81
+
+
+state 67
+
+    (30) id_lista -> ID COMA id_lista .
+
+    PALABRA_CLAVE_LEFT reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PALABRA_CLAVE_RIGHT reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PALABRA_CLAVE_FULL reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PALABRA_CLAVE_INNER reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PALABRA_CLAVE_WHERE reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    $end            reduce using rule 30 (id_lista -> ID COMA id_lista .)
+    PAR_DER         reduce using rule 30 (id_lista -> ID COMA id_lista .)
+
+
+state 68
+
+    (20) funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER .
+
+    PALABRA_CLAVE_AS reduce using rule 20 (funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER .)
+    COMA            reduce using rule 20 (funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER .)
+    PALABRA_CLAVE_FROM reduce using rule 20 (funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER .)
+
+
+state 69
+
+    (28) expression -> ID OPERADOR . expression
+    (25) expression -> . ID
+    (26) expression -> . NUMERO_ENTERO
+    (27) expression -> . NUMERO_DECIMAL
+    (28) expression -> . ID OPERADOR expression
+
+    ID              shift and go to state 51
+    NUMERO_ENTERO   shift and go to state 52
+    NUMERO_DECIMAL  shift and go to state 53
+
+    expression                     shift and go to state 82
+
+state 70
+
+    (21) funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER .
+
+    PALABRA_CLAVE_AS reduce using rule 21 (funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER .)
+    COMA            reduce using rule 21 (funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER .)
+    PALABRA_CLAVE_FROM reduce using rule 21 (funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER .)
+
+
+state 71
+
+    (22) funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER .
+
+    PALABRA_CLAVE_AS reduce using rule 22 (funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER .)
+    COMA            reduce using rule 22 (funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER .)
+    PALABRA_CLAVE_FROM reduce using rule 22 (funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER .)
+
+
+state 72
+
+    (23) funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER .
+
+    PALABRA_CLAVE_AS reduce using rule 23 (funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER .)
+    COMA            reduce using rule 23 (funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER .)
+    PALABRA_CLAVE_FROM reduce using rule 23 (funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER .)
+
+
+state 73
+
+    (24) funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER .
+
+    PALABRA_CLAVE_AS reduce using rule 24 (funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER .)
+    COMA            reduce using rule 24 (funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER .)
+    PALABRA_CLAVE_FROM reduce using rule 24 (funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER .)
+
+
+state 74
+
+    (45) datos -> ID .
+    (49) datos -> ID . OPERADOR datos
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 45 (datos -> ID .)
+    $end            reduce using rule 45 (datos -> ID .)
+    PAR_DER         reduce using rule 45 (datos -> ID .)
+    OPERADOR        shift and go to state 83
+
+
+state 75
+
+    (42) condicion -> ID IGUAL datos .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 42 (condicion -> ID IGUAL datos .)
+    $end            reduce using rule 42 (condicion -> ID IGUAL datos .)
+    PAR_DER         reduce using rule 42 (condicion -> ID IGUAL datos .)
+
+
+state 76
+
+    (46) datos -> valor .
+    (48) datos -> valor . OPERADOR datos
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 46 (datos -> valor .)
+    $end            reduce using rule 46 (datos -> valor .)
+    PAR_DER         reduce using rule 46 (datos -> valor .)
+    OPERADOR        shift and go to state 84
+
+
+state 77
+
+    (47) datos -> PAR_IZQ . sub_consulta PAR_DER
+    (50) sub_consulta -> . select_clause_sola_sub from_clause where_clause group_by
+    (51) sub_consulta -> . select_clause_sola_sub from_clause group_by
+    (52) sub_consulta -> . select_clause_sola_sub from_clause where_clause
+    (53) sub_consulta -> . select_clause_sola_sub from_clause
+    (54) select_clause_sola_sub -> . PALABRA_CLAVE_SELECT ID
+    (55) select_clause_sola_sub -> . PALABRA_CLAVE_SELECT funcion_agregada
+
+    PALABRA_CLAVE_SELECT shift and go to state 87
+
+    sub_consulta                   shift and go to state 85
+    select_clause_sola_sub         shift and go to state 86
+
+state 78
+
+    (43) condicion -> ID PALABRA_CLAVE_IN datos .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 43 (condicion -> ID PALABRA_CLAVE_IN datos .)
+    $end            reduce using rule 43 (condicion -> ID PALABRA_CLAVE_IN datos .)
+    PAR_DER         reduce using rule 43 (condicion -> ID PALABRA_CLAVE_IN datos .)
+
+
+state 79
+
+    (44) condicion -> ID COMPARADOR datos .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 44 (condicion -> ID COMPARADOR datos .)
+    $end            reduce using rule 44 (condicion -> ID COMPARADOR datos .)
+    PAR_DER         reduce using rule 44 (condicion -> ID COMPARADOR datos .)
+
+
+state 80
+
+    (9) group_by_valor -> ID COMA group_by_valor .
+
+    PALABRA_CLAVE_DESC reduce using rule 9 (group_by_valor -> ID COMA group_by_valor .)
+    PALABRA_CLAVE_ASC reduce using rule 9 (group_by_valor -> ID COMA group_by_valor .)
+    $end            reduce using rule 9 (group_by_valor -> ID COMA group_by_valor .)
+    PAR_DER         reduce using rule 9 (group_by_valor -> ID COMA group_by_valor .)
+
+
+state 81
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN ID . PALABRA_CLAVE_ON ID IGUAL ID
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID . ID PALABRA_CLAVE_ON ID IGUAL ID
+
+    PALABRA_CLAVE_ON shift and go to state 89
+    ID              shift and go to state 88
+
+
+state 82
+
+    (28) expression -> ID OPERADOR expression .
+
+    PAR_DER         reduce using rule 28 (expression -> ID OPERADOR expression .)
+
+
+state 83
+
+    (49) datos -> ID OPERADOR . datos
+    (45) datos -> . ID
+    (46) datos -> . valor
+    (47) datos -> . PAR_IZQ sub_consulta PAR_DER
+    (48) datos -> . valor OPERADOR datos
+    (49) datos -> . ID OPERADOR datos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+
+    ID              shift and go to state 74
+    PAR_IZQ         shift and go to state 77
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    datos                          shift and go to state 90
+    valor                          shift and go to state 76
+
+state 84
+
+    (48) datos -> valor OPERADOR . datos
+    (45) datos -> . ID
+    (46) datos -> . valor
+    (47) datos -> . PAR_IZQ sub_consulta PAR_DER
+    (48) datos -> . valor OPERADOR datos
+    (49) datos -> . ID OPERADOR datos
+    (56) valor -> . NUMERO_ENTERO
+    (57) valor -> . NUMERO_DECIMAL
+    (58) valor -> . CADENA
+
+    ID              shift and go to state 74
+    PAR_IZQ         shift and go to state 77
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    valor                          shift and go to state 76
+    datos                          shift and go to state 91
+
+state 85
+
+    (47) datos -> PAR_IZQ sub_consulta . PAR_DER
+
+    PAR_DER         shift and go to state 92
+
+
+state 86
+
+    (50) sub_consulta -> select_clause_sola_sub . from_clause where_clause group_by
+    (51) sub_consulta -> select_clause_sola_sub . from_clause group_by
+    (52) sub_consulta -> select_clause_sola_sub . from_clause where_clause
+    (53) sub_consulta -> select_clause_sola_sub . from_clause
+    (31) from_clause -> . PALABRA_CLAVE_FROM id_lista joins
+    (32) from_clause -> . PALABRA_CLAVE_FROM id_lista
+
+    PALABRA_CLAVE_FROM shift and go to state 6
+
+    from_clause                    shift and go to state 93
+
+state 87
+
+    (54) select_clause_sola_sub -> PALABRA_CLAVE_SELECT . ID
+    (55) select_clause_sola_sub -> PALABRA_CLAVE_SELECT . funcion_agregada
+    (20) funcion_agregada -> . PALABRA_CLAVE_AVG PAR_IZQ expression PAR_DER
+    (21) funcion_agregada -> . PALABRA_CLAVE_MAX PAR_IZQ expression PAR_DER
+    (22) funcion_agregada -> . PALABRA_CLAVE_MIN PAR_IZQ expression PAR_DER
+    (23) funcion_agregada -> . PALABRA_CLAVE_COUNT PAR_IZQ expression PAR_DER
+    (24) funcion_agregada -> . PALABRA_CLAVE_SUM PAR_IZQ expression PAR_DER
+
+    ID              shift and go to state 94
+    PALABRA_CLAVE_AVG shift and go to state 15
+    PALABRA_CLAVE_MAX shift and go to state 16
+    PALABRA_CLAVE_MIN shift and go to state 17
+    PALABRA_CLAVE_COUNT shift and go to state 18
+    PALABRA_CLAVE_SUM shift and go to state 19
+
+    funcion_agregada               shift and go to state 95
+
+state 88
+
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID ID . PALABRA_CLAVE_ON ID IGUAL ID
+
+    PALABRA_CLAVE_ON shift and go to state 96
+
+
+state 89
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON . ID IGUAL ID
+
+    ID              shift and go to state 97
+
+
+state 90
+
+    (49) datos -> ID OPERADOR datos .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 49 (datos -> ID OPERADOR datos .)
+    $end            reduce using rule 49 (datos -> ID OPERADOR datos .)
+    PAR_DER         reduce using rule 49 (datos -> ID OPERADOR datos .)
+
+
+state 91
+
+    (48) datos -> valor OPERADOR datos .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 48 (datos -> valor OPERADOR datos .)
+    $end            reduce using rule 48 (datos -> valor OPERADOR datos .)
+    PAR_DER         reduce using rule 48 (datos -> valor OPERADOR datos .)
+
+
+state 92
+
+    (47) datos -> PAR_IZQ sub_consulta PAR_DER .
+
+    PALABRA_CLAVE_GROUP_BY reduce using rule 47 (datos -> PAR_IZQ sub_consulta PAR_DER .)
+    $end            reduce using rule 47 (datos -> PAR_IZQ sub_consulta PAR_DER .)
+    PAR_DER         reduce using rule 47 (datos -> PAR_IZQ sub_consulta PAR_DER .)
+
+
+state 93
+
+    (50) sub_consulta -> select_clause_sola_sub from_clause . where_clause group_by
+    (51) sub_consulta -> select_clause_sola_sub from_clause . group_by
+    (52) sub_consulta -> select_clause_sola_sub from_clause . where_clause
+    (53) sub_consulta -> select_clause_sola_sub from_clause .
+    (41) where_clause -> . PALABRA_CLAVE_WHERE condicion
+    (6) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo
+    (7) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor
+
+    PAR_DER         reduce using rule 53 (sub_consulta -> select_clause_sola_sub from_clause .)
+    PALABRA_CLAVE_WHERE shift and go to state 22
+    PALABRA_CLAVE_GROUP_BY shift and go to state 23
+
+    where_clause                   shift and go to state 98
+    group_by                       shift and go to state 99
+
+state 94
+
+    (54) select_clause_sola_sub -> PALABRA_CLAVE_SELECT ID .
+
+    PALABRA_CLAVE_FROM reduce using rule 54 (select_clause_sola_sub -> PALABRA_CLAVE_SELECT ID .)
+
+
+state 95
+
+    (55) select_clause_sola_sub -> PALABRA_CLAVE_SELECT funcion_agregada .
+
+    PALABRA_CLAVE_FROM reduce using rule 55 (select_clause_sola_sub -> PALABRA_CLAVE_SELECT funcion_agregada .)
+
+
+state 96
+
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON . ID IGUAL ID
+
+    ID              shift and go to state 100
+
+
+state 97
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID . IGUAL ID
+
+    IGUAL           shift and go to state 101
+
+
+state 98
+
+    (50) sub_consulta -> select_clause_sola_sub from_clause where_clause . group_by
+    (52) sub_consulta -> select_clause_sola_sub from_clause where_clause .
+    (6) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor group_by_acomodo
+    (7) group_by -> . PALABRA_CLAVE_GROUP_BY group_by_valor
+
+    PAR_DER         reduce using rule 52 (sub_consulta -> select_clause_sola_sub from_clause where_clause .)
+    PALABRA_CLAVE_GROUP_BY shift and go to state 23
+
+    group_by                       shift and go to state 102
+
+state 99
+
+    (51) sub_consulta -> select_clause_sola_sub from_clause group_by .
+
+    PAR_DER         reduce using rule 51 (sub_consulta -> select_clause_sola_sub from_clause group_by .)
+
+
+state 100
+
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID . IGUAL ID
+
+    IGUAL           shift and go to state 103
+
+
+state 101
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL . ID
+
+    ID              shift and go to state 104
+
+
+state 102
+
+    (50) sub_consulta -> select_clause_sola_sub from_clause where_clause group_by .
+
+    PAR_DER         reduce using rule 50 (sub_consulta -> select_clause_sola_sub from_clause where_clause group_by .)
+
+
+state 103
+
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL . ID
+
+    ID              shift and go to state 105
+
+
+state 104
+
+    (35) join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .
+
+    PALABRA_CLAVE_LEFT reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_RIGHT reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_FULL reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_INNER reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_WHERE reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    $end            reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PAR_DER         reduce using rule 35 (join -> join_type PALABRA_CLAVE_JOIN ID PALABRA_CLAVE_ON ID IGUAL ID .)
+
+
+state 105
+
+    (36) join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .
+
+    PALABRA_CLAVE_LEFT reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_RIGHT reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_FULL reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_INNER reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_WHERE reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PALABRA_CLAVE_GROUP_BY reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    $end            reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+    PAR_DER         reduce using rule 36 (join -> join_type PALABRA_CLAVE_JOIN ID ID PALABRA_CLAVE_ON ID IGUAL ID .)
+

@@ -65,7 +65,7 @@ tokens = [
     'TIMESTAMP',
     'DATE',
     'DATETIME',
-    'TINYINT'
+    'TINYINT',
 ]
 
 palabras_clave = {
@@ -152,7 +152,7 @@ def t_COUNT(t):
     return t
 
 def t_ID(t):
-    r'([a-zA-Z][a-zA-Z]*\.[a-zA-Z][a-zA-Z]*) | ([a-zA-Z][a-zA-Z]*\.\*) | ([a-zA-Z][a-zA-Z]*)'
+    r'([a-zA-Z_][a-zA-Z_]*\.[a-zA-Z_][a-zA-Z_]*) | ([a-zA-Z_][a-zA-Z_]*\.\*) | ([a-zA-Z_][a-zA-Z_]*)'
     t.type = palabras_clave.get(t.value.upper(), 'ID')
     if t.type == 'PALABRA_CLAVE_SELECT':
         t.lexer.begin('IDS')
@@ -199,18 +199,21 @@ def encontrar_columna(entrada, token):
     return (token.lexpos - inicio_linea) + 1
 
 def tokenizar(codigo_sql):
+    global posiciones
     lexer.input(codigo_sql)
     lexer.lineno = 1
     lexer.column = 1
     lexer.errors = []
     tokens = []
+    posiciones = {}
     while True:
         tok = lexer.token()
         if not tok:
             break
         tok.column = encontrar_columna(lexer.lexdata, tok)
         tokens.append((tok.type, tok.value, tok.lineno, tok.column))
-    return tokens, lexer.errors
-
+        posiciones[tok.lineno] = tok.column
+    return tokens, lexer.errors, posiciones
+posiciones = {}
 lexer = lex.lex()
 lexer.errors = []

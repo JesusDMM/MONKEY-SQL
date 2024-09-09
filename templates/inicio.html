@@ -6,36 +6,29 @@
     <title>Code Editor</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.css"
     />
-    <style>
-      /* Añadir algunos estilos básicos */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-      }
-      .CodeMirror {
-        width: 80%;
-        height: 80%;
-        background-color: #282a36; /* Fondo oscuro */
-        color: #f8f8f2; /* Color del texto */
-      }
-      /* Estilo personalizado para el cursor */
-      .CodeMirror-cursor {
-        border-left: 1px solid white !important;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/theme/dracula.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/estilos.css') }}"
+    />
   </head>
   <body>
-    <textarea id="editor"></textarea>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
-    <script src="../JAVASCRIPTS/compilador.js"></script>
+    <div class="editores">
+      <div class="archivos">
+        <textarea id="archivos"></textarea>
+      </div>
+      <div class="sql">
+        <textarea id="sql-editor"></textarea>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='JAVASCRIPTS/compilador.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.17/mode/sql/sql.min.js"></script>
   </body>
 </html>

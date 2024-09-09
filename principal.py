@@ -1,10 +1,10 @@
-from flask import Flask, send_file
+from flask import Flask, render_template
 
-app = Flask(__name__, static_folder='/')
+app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    return send_file('HTML/inicio.html')
+def principal():
+    return render_template('inicio.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
