@@ -1,7 +1,7 @@
 from analizador_lexico import *
 from analizador_sintactico import *
 from analizador_semantico import *
-consulta = "SELECT EMPLEADO.ID, SUM(EMPLEADO.NOMBRE + 5) FROM EMPLEADOS INNER JOIN CATEGORIAS ON EMPLEADOS.CATEGORIAS = CATEGORIAS.ID WHERE EMPLEADOS.ID > 5 "
+consulta = "SELECT EMPLEADO.ID FROM EMPLEADO "
 tokens, errores, tok = tokenizar(consulta)
 arbol, errores_sintacticos = analizar_consulta(consulta)
 objeto = AnalizadorSemantico()

@@ -49,7 +49,6 @@ def p_select_clause_sola(p):
     '''select_clause_sola : PALABRA_CLAVE_SELECT valor'''
     p[0] = ('SELECT', p[2])
 
-# Clausula SELECT
 def p_select_clause(p):
     '''select_clause : PALABRA_CLAVE_SELECT campos'''
     p[0] = ('SELECT', p[2])
