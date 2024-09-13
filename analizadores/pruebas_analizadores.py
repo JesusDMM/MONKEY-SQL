@@ -1,7 +1,9 @@
 from analizador_lexico import *
 from analizador_sintactico import *
 from analizador_semantico import *
-consulta = "SELECT EMPLEADO.ID FROM EMPLEADO "
+consulta = '''
+            Select '88/88/8888', avg()
+           '''
 tokens, errores, tok = tokenizar(consulta)
 arbol, errores_sintacticos = analizar_consulta(consulta)
 objeto = AnalizadorSemantico()

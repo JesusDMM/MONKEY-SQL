@@ -181,7 +181,9 @@ def p_error(p):
     global errores_programas
     if p:
         errores_programas.append(f"Sintaxis incorrecta en el token '{p.value}' en la línea {p.lineno}, posición {p.lexpos}.")
-        #parser.errok()
+        parser.errok()
+    else:
+        errores_programas.append('Error de sintaxis, verifica tu codigo porfis :)')
 
 parser = yacc.yacc(start = 'consulta')
 
