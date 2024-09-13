@@ -129,6 +129,7 @@ states = (
 )
 
 t_IGUAL = r'\='
+t_DATE = r'\'\b\d{2}/\d{2}/\d{4}\b\''
 t_CADENA = r'\'[^\']*\''
 t_OPERADOR = r'[\+\-\/!]+'
 t_FINAL = r'[;]'
@@ -143,12 +144,6 @@ def t_NUMERO_DECIMAL(t):
 def t_NUMERO_ENTERO(t):
     r'\b\d+\b'
     t.value = int(t.value)
-    return t
-
-def t_COUNT(t):
-    r'COUNT'
-    t.type = 'PALABRA_CLAVE_COUNT'
-    t.lexer.begin('IDS')
     return t
 
 def t_ID(t):
