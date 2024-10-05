@@ -3,38 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SQL Editor Online</title>
-    <link rel="stylesheet" href="../static/CSS/semantico.css"">
+    <title>MonkeySQL</title>
+    <link rel="stylesheet" href="../static/CSS/semantico.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="editor">
-        <h3>Input</h3>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Lexer</a></li>
+          <li><a href="#">Sintactic</a></li>
+          <li><a href="#">Compiler</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="input-container">
+        <label for="sql-input">Input</label>
         <textarea
           id="sql-input"
           placeholder="-- Escribe tu consulta SQL aquí..."
         ></textarea>
-        <button class="button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="white"
-            width="24px"
-            height="24px"
-          >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          <span>Run</span>
-        </button>
+        <button id="run-btn">Run</button>
       </div>
 
-      <div class="output">
-        <h3>Output</h3>
-        <div id="output-content">
-          <!-- Aquí aparecerán los resultados -->
-          <table></table>
-        </div>
+      <div class="output-container">
+        <label for="output">Output</label>
+        <div id="output"></div>
       </div>
-    </div>
+    </main>
   </body>
 </html>
