@@ -1,8 +1,62 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+header {
+  padding: 10px 0;
+}
+.rounded-header {
+  background-color: rgba(
+    134,
+    114,
+    149,
+    0.5
+  ); /* Color #867295 con 50% de transparencia */
+  border-radius: 20px;
+  padding: 25px 10px; /* Reduce el padding */
+  margin: 20px auto 10px auto;
+  width: 110%; /* Controla el ancho del header */
+  max-width: 1200px; /* Ancho máximo del header */
+}
+
+.title {
+  font-family: "Consolas", monospace;
+  font-size: 26px;
+  font-weight: normal;
+  color: white;
+}
+
+.sql {
+  color: #ff5e00; /* Color diferente para "SQL" */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around; /* Distribuye los elementos */
+  padding: 0;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+li a {
+  font-family: "Consolas", monospace;
+  font-size: 26px;
 }
 
 /* Estilos generales */
@@ -13,32 +67,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-header {
-  background-color: #3d2c6f;
-  width: 100%;
-  padding: 10px 0;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #ff530d;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
 }
 
 main {
