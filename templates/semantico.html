@@ -6,6 +6,7 @@
     <title>MonkeySQL</title>
     <link rel="stylesheet" href="../static/CSS/semantico.css" />
   </head>
+
   <body>
     <header class="rounded-header">
       <nav>
@@ -20,6 +21,10 @@
         </ul>
       </nav>
     </header>
+    <!-- 
+    <div class="image-container">
+      <img src="../img/monkey neon 2.png" alt="Descripción de la imagen" />
+    </div> -->
 
     <main>
       <div class="input-container">
@@ -28,7 +33,27 @@
           id="sql-input"
           placeholder="-- Escribe tu consulta SQL aquí..."
         ></textarea>
-        <button id="run-btn">Run</button>
+
+        <button class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              id="SVGRepo_tracerCarrier"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M8 5v14l11-7-11-7z" fill="currentColor"></path>
+              <!-- Triángulo Play -->
+            </g>
+          </svg>
+          <span>Run it</span>
+        </button>
       </div>
 
       <div class="output-container">

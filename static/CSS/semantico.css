@@ -6,6 +6,7 @@
 
 header {
   padding: 10px 0;
+  align-items: flex-start;
 }
 .rounded-header {
   background-color: rgba(
@@ -59,10 +60,9 @@ li a {
   font-size: 26px;
 }
 
-/* Estilos generales */
+/* Estilos generales ------------------------------------------- */
 body {
   background-image: url("../../img/background.png"); /* Ruta a tu imagen de fondo */
-
   font-family: Arial, sans-serif;
   background-color: #282143;
   color: #fff;
@@ -71,10 +71,17 @@ body {
   align-items: center;
 }
 
+.image-container img {
+  align-items: start;
+  max-width: 200px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto;
+}
+
 main {
   margin-top: 20px;
   width: 90%;
   max-width: 900px;
+  align-items: flex-end;
 }
 
 .input-container,
@@ -131,11 +138,11 @@ button:hover {
 /* Estilos para los contenedores de input y output */
 .input-container,
 .output-container {
-  border: 2px solid #00cfff; /* Borde azul alrededor de los contenedores */
+  border: 2px solid #72efdd; /* Borde azul alrededor de los contenedores */
   padding: 10px; /* Espaciado interno */
   margin-bottom: 20px; /* Espaciado inferior entre contenedores */
   border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff, 0 0 30px #00cfff; /* Efecto neón */
+  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd; /* Efecto neón */
 }
 
 /* Estilos adicionales para el textarea y el botón */
@@ -143,4 +150,61 @@ button:hover {
 button#run-btn:hover {
   background-color: darkblue;
   box-shadow: 0 0 10px darkblue, 0 0 20px darkblue, 0 0 30px darkblue; /* Efecto neón */
+}
+
+/* estilos de boton */
+
+/* From Uiverse.io by Yaya12085 */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  border: none;
+  background: #0ba360;
+  background: linear-gradient(to right, #5390d9, #4ea8de);
+  color: white;
+  font-family: inherit;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0px 14px 56px -11px #0ba360;
+  width: 13em;
+  padding: 0.7em;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.button svg {
+  width: 25px;
+  height: 25px;
+}
+
+.button svg path {
+  fill: white;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+
+.button span:after {
+  content: "Semantic";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.7s;
+  color: #ffffff;
+}
+
+.button:hover span {
+  padding-right: 4.5em;
+}
+
+.button:hover span:after {
+  opacity: 4;
+  right: 0;
 }
