@@ -1,1 +1,439 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMPARADOR
+    DATETIME
+    DOUBLE
+    FINAL
+    IGUAL
+    INT
+    NUEVA_LINEA
+    PALABRA_CLAVE_ALTER
+    PALABRA_CLAVE_AND
+    PALABRA_CLAVE_AS
+    PALABRA_CLAVE_ASC
+    PALABRA_CLAVE_BETWEEN
+    PALABRA_CLAVE_CREATE
+    PALABRA_CLAVE_DATABASE
+    PALABRA_CLAVE_DELETE
+    PALABRA_CLAVE_DESC
+    PALABRA_CLAVE_DROP
+    PALABRA_CLAVE_EXISTS
+    PALABRA_CLAVE_FOREIGN
+    PALABRA_CLAVE_FULL
+    PALABRA_CLAVE_GROUP_BY
+    PALABRA_CLAVE_HAVING
+    PALABRA_CLAVE_IN
+    PALABRA_CLAVE_INNER
+    PALABRA_CLAVE_INSERT
+    PALABRA_CLAVE_INTO
+    PALABRA_CLAVE_JOIN
+    PALABRA_CLAVE_KEY
+    PALABRA_CLAVE_LEFT
+    PALABRA_CLAVE_LIKE
+    PALABRA_CLAVE_LIMIT
+    PALABRA_CLAVE_NOT
+    PALABRA_CLAVE_NULL
+    PALABRA_CLAVE_ON
+    PALABRA_CLAVE_PRIMARY
+    PALABRA_CLAVE_RIGHT
+    PALABRA_CLAVE_SET
+    PALABRA_CLAVE_TABLE
+    PALABRA_CLAVE_TRUNCATE
+    PALABRA_CLAVE_UNION
+    PALABRA_CLAVE_UPDATE
+    PALABRA_CLAVE_USE
+    PALABRA_CLAVE_VALUES
+    PALABRA_CLAVE_WHERE
+    TEXT
+    TIMESTAMP
+    TINYINT
+    TIPO_DATO
+    VARCHAR
+
+Grammar
+
+Rule 0     S' -> Inicio_consultas
+Rule 1     Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM from_individual
+Rule 2     Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual
+Rule 3     from_individual -> tabla
+Rule 4     tabla -> ID
+Rule 5     tabla -> ID COMA tabla
+Rule 6     select_intermedio_funciones -> columnas
+Rule 7     select_intermedio_funciones -> columnas COMA Funcion_agregada
+Rule 8     Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expresion PAR_DER
+Rule 9     Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expresion PAR_DER
+Rule 10    Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expresion PAR_DER
+Rule 11    Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expresion PAR_DER
+Rule 12    Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expresion PAR_DER
+Rule 13    expresion -> ID
+Rule 14    expresion -> valores
+Rule 15    expresion -> ID OPERADOR expresion
+Rule 16    expresion -> valores OPERADOR expresion
+Rule 17    select_intermedio -> columnas
+Rule 18    select_individual -> valores
+Rule 19    select_individual -> valores COMA valores
+Rule 20    valores -> DATE
+Rule 21    valores -> NUMERO_ENTERO
+Rule 22    valores -> NUMERO_DECIMAL
+Rule 23    valores -> CADENA
+Rule 24    columnas -> ID
+Rule 25    columnas -> valores
+Rule 26    columnas -> ID COMA columnas
+Rule 27    columnas -> valores COMA columnas
+
+Terminals, with rules where they appear
+
+CADENA               : 23
+COMA                 : 5 7 19 26 27
+COMPARADOR           : 
+DATE                 : 20
+DATETIME             : 
+DOUBLE               : 
+FINAL                : 
+ID                   : 4 5 13 15 24 26
+IGUAL                : 
+INT                  : 
+NUEVA_LINEA          : 
+NUMERO_DECIMAL       : 22
+NUMERO_ENTERO        : 21
+OPERADOR             : 15 16
+PALABRA_CLAVE_ALTER  : 
+PALABRA_CLAVE_AND    : 
+PALABRA_CLAVE_AS     : 
+PALABRA_CLAVE_ASC    : 
+PALABRA_CLAVE_AVG    : 8
+PALABRA_CLAVE_BETWEEN : 
+PALABRA_CLAVE_COUNT  : 11
+PALABRA_CLAVE_CREATE : 
+PALABRA_CLAVE_DATABASE : 
+PALABRA_CLAVE_DELETE : 
+PALABRA_CLAVE_DESC   : 
+PALABRA_CLAVE_DROP   : 
+PALABRA_CLAVE_EXISTS : 
+PALABRA_CLAVE_FOREIGN : 
+PALABRA_CLAVE_FROM   : 1
+PALABRA_CLAVE_FULL   : 
+PALABRA_CLAVE_GROUP_BY : 
+PALABRA_CLAVE_HAVING : 
+PALABRA_CLAVE_IN     : 
+PALABRA_CLAVE_INNER  : 
+PALABRA_CLAVE_INSERT : 
+PALABRA_CLAVE_INTO   : 
+PALABRA_CLAVE_JOIN   : 
+PALABRA_CLAVE_KEY    : 
+PALABRA_CLAVE_LEFT   : 
+PALABRA_CLAVE_LIKE   : 
+PALABRA_CLAVE_LIMIT  : 
+PALABRA_CLAVE_MAX    : 9
+PALABRA_CLAVE_MIN    : 10
+PALABRA_CLAVE_NOT    : 
+PALABRA_CLAVE_NULL   : 
+PALABRA_CLAVE_ON     : 
+PALABRA_CLAVE_PRIMARY : 
+PALABRA_CLAVE_RIGHT  : 
+PALABRA_CLAVE_SELECT : 1 2
+PALABRA_CLAVE_SET    : 
+PALABRA_CLAVE_SUM    : 12
+PALABRA_CLAVE_TABLE  : 
+PALABRA_CLAVE_TRUNCATE : 
+PALABRA_CLAVE_UNION  : 
+PALABRA_CLAVE_UPDATE : 
+PALABRA_CLAVE_USE    : 
+PALABRA_CLAVE_VALUES : 
+PALABRA_CLAVE_WHERE  : 
+PAR_DER              : 8 9 10 11 12
+PAR_IZQ              : 8 9 10 11 12
+TEXT                 : 
+TIMESTAMP            : 
+TINYINT              : 
+TIPO_DATO            : 
+VARCHAR              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+Funcion_agregada     : 7
+Inicio_consultas     : 0
+columnas             : 6 7 17 26 27
+expresion            : 8 9 10 11 12 15 16
+from_individual      : 1
+select_individual    : 2
+select_intermedio    : 1
+select_intermedio_funciones : 
+tabla                : 3 5
+valores              : 14 16 18 19 19 25 27
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Inicio_consultas
+    (1) Inicio_consultas -> . PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM from_individual
+    (2) Inicio_consultas -> . PALABRA_CLAVE_SELECT select_individual
+
+    PALABRA_CLAVE_SELECT shift and go to state 2
+
+    Inicio_consultas               shift and go to state 1
+
+state 1
+
+    (0) S' -> Inicio_consultas .
+
+
+
+state 2
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT . select_intermedio PALABRA_CLAVE_FROM from_individual
+    (2) Inicio_consultas -> PALABRA_CLAVE_SELECT . select_individual
+    (17) select_intermedio -> . columnas
+    (18) select_individual -> . valores
+    (19) select_individual -> . valores COMA valores
+    (24) columnas -> . ID
+    (25) columnas -> . valores
+    (26) columnas -> . ID COMA columnas
+    (27) columnas -> . valores COMA columnas
+    (20) valores -> . DATE
+    (21) valores -> . NUMERO_ENTERO
+    (22) valores -> . NUMERO_DECIMAL
+    (23) valores -> . CADENA
+
+    ID              shift and go to state 7
+    DATE            shift and go to state 8
+    NUMERO_ENTERO   shift and go to state 9
+    NUMERO_DECIMAL  shift and go to state 10
+    CADENA          shift and go to state 11
+
+    select_intermedio              shift and go to state 3
+    select_individual              shift and go to state 4
+    columnas                       shift and go to state 5
+    valores                        shift and go to state 6
+
+state 3
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio . PALABRA_CLAVE_FROM from_individual
+
+    PALABRA_CLAVE_FROM shift and go to state 12
+
+
+state 4
+
+    (2) Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual .
+
+    $end            reduce using rule 2 (Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual .)
+
+
+state 5
+
+    (17) select_intermedio -> columnas .
+
+    PALABRA_CLAVE_FROM reduce using rule 17 (select_intermedio -> columnas .)
+
+
+state 6
+
+    (18) select_individual -> valores .
+    (19) select_individual -> valores . COMA valores
+    (25) columnas -> valores .
+    (27) columnas -> valores . COMA columnas
+
+    $end            reduce using rule 18 (select_individual -> valores .)
+    COMA            shift and go to state 13
+    PALABRA_CLAVE_FROM reduce using rule 25 (columnas -> valores .)
+
+
+state 7
+
+    (24) columnas -> ID .
+    (26) columnas -> ID . COMA columnas
+
+    PALABRA_CLAVE_FROM reduce using rule 24 (columnas -> ID .)
+    COMA            shift and go to state 14
+
+
+state 8
+
+    (20) valores -> DATE .
+
+    COMA            reduce using rule 20 (valores -> DATE .)
+    $end            reduce using rule 20 (valores -> DATE .)
+    PALABRA_CLAVE_FROM reduce using rule 20 (valores -> DATE .)
+
+
+state 9
+
+    (21) valores -> NUMERO_ENTERO .
+
+    COMA            reduce using rule 21 (valores -> NUMERO_ENTERO .)
+    $end            reduce using rule 21 (valores -> NUMERO_ENTERO .)
+    PALABRA_CLAVE_FROM reduce using rule 21 (valores -> NUMERO_ENTERO .)
+
+
+state 10
+
+    (22) valores -> NUMERO_DECIMAL .
+
+    COMA            reduce using rule 22 (valores -> NUMERO_DECIMAL .)
+    $end            reduce using rule 22 (valores -> NUMERO_DECIMAL .)
+    PALABRA_CLAVE_FROM reduce using rule 22 (valores -> NUMERO_DECIMAL .)
+
+
+state 11
+
+    (23) valores -> CADENA .
+
+    COMA            reduce using rule 23 (valores -> CADENA .)
+    $end            reduce using rule 23 (valores -> CADENA .)
+    PALABRA_CLAVE_FROM reduce using rule 23 (valores -> CADENA .)
+
+
+state 12
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM . from_individual
+    (3) from_individual -> . tabla
+    (4) tabla -> . ID
+    (5) tabla -> . ID COMA tabla
+
+    ID              shift and go to state 17
+
+    from_individual                shift and go to state 15
+    tabla                          shift and go to state 16
+
+state 13
+
+    (19) select_individual -> valores COMA . valores
+    (27) columnas -> valores COMA . columnas
+    (20) valores -> . DATE
+    (21) valores -> . NUMERO_ENTERO
+    (22) valores -> . NUMERO_DECIMAL
+    (23) valores -> . CADENA
+    (24) columnas -> . ID
+    (25) columnas -> . valores
+    (26) columnas -> . ID COMA columnas
+    (27) columnas -> . valores COMA columnas
+
+    DATE            shift and go to state 8
+    NUMERO_ENTERO   shift and go to state 9
+    NUMERO_DECIMAL  shift and go to state 10
+    CADENA          shift and go to state 11
+    ID              shift and go to state 7
+
+    valores                        shift and go to state 18
+    columnas                       shift and go to state 19
+
+state 14
+
+    (26) columnas -> ID COMA . columnas
+    (24) columnas -> . ID
+    (25) columnas -> . valores
+    (26) columnas -> . ID COMA columnas
+    (27) columnas -> . valores COMA columnas
+    (20) valores -> . DATE
+    (21) valores -> . NUMERO_ENTERO
+    (22) valores -> . NUMERO_DECIMAL
+    (23) valores -> . CADENA
+
+    ID              shift and go to state 7
+    DATE            shift and go to state 8
+    NUMERO_ENTERO   shift and go to state 9
+    NUMERO_DECIMAL  shift and go to state 10
+    CADENA          shift and go to state 11
+
+    columnas                       shift and go to state 20
+    valores                        shift and go to state 21
+
+state 15
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM from_individual .
+
+    $end            reduce using rule 1 (Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM from_individual .)
+
+
+state 16
+
+    (3) from_individual -> tabla .
+
+    $end            reduce using rule 3 (from_individual -> tabla .)
+
+
+state 17
+
+    (4) tabla -> ID .
+    (5) tabla -> ID . COMA tabla
+
+    $end            reduce using rule 4 (tabla -> ID .)
+    COMA            shift and go to state 22
+
+
+state 18
+
+    (19) select_individual -> valores COMA valores .
+    (25) columnas -> valores .
+    (27) columnas -> valores . COMA columnas
+
+    $end            reduce using rule 19 (select_individual -> valores COMA valores .)
+    PALABRA_CLAVE_FROM reduce using rule 25 (columnas -> valores .)
+    COMA            shift and go to state 23
+
+
+state 19
+
+    (27) columnas -> valores COMA columnas .
+
+    PALABRA_CLAVE_FROM reduce using rule 27 (columnas -> valores COMA columnas .)
+
+
+state 20
+
+    (26) columnas -> ID COMA columnas .
+
+    PALABRA_CLAVE_FROM reduce using rule 26 (columnas -> ID COMA columnas .)
+
+
+state 21
+
+    (25) columnas -> valores .
+    (27) columnas -> valores . COMA columnas
+
+    PALABRA_CLAVE_FROM reduce using rule 25 (columnas -> valores .)
+    COMA            shift and go to state 23
+
+
+state 22
+
+    (5) tabla -> ID COMA . tabla
+    (4) tabla -> . ID
+    (5) tabla -> . ID COMA tabla
+
+    ID              shift and go to state 17
+
+    tabla                          shift and go to state 24
+
+state 23
+
+    (27) columnas -> valores COMA . columnas
+    (24) columnas -> . ID
+    (25) columnas -> . valores
+    (26) columnas -> . ID COMA columnas
+    (27) columnas -> . valores COMA columnas
+    (20) valores -> . DATE
+    (21) valores -> . NUMERO_ENTERO
+    (22) valores -> . NUMERO_DECIMAL
+    (23) valores -> . CADENA
+
+    ID              shift and go to state 7
+    DATE            shift and go to state 8
+    NUMERO_ENTERO   shift and go to state 9
+    NUMERO_DECIMAL  shift and go to state 10
+    CADENA          shift and go to state 11
+
+    valores                        shift and go to state 21
+    columnas                       shift and go to state 19
+
+state 24
+
+    (5) tabla -> ID COMA tabla .
+
+    $end            reduce using rule 5 (tabla -> ID COMA tabla .)
+
