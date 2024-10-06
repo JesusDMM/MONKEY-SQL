@@ -1,1 +1,744 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMPARADOR
+    DATETIME
+    DOUBLE
+    FINAL
+    IGUAL
+    INT
+    NUEVA_LINEA
+    PALABRA_CLAVE_ALTER
+    PALABRA_CLAVE_AND
+    PALABRA_CLAVE_AS
+    PALABRA_CLAVE_ASC
+    PALABRA_CLAVE_BETWEEN
+    PALABRA_CLAVE_CREATE
+    PALABRA_CLAVE_DATABASE
+    PALABRA_CLAVE_DELETE
+    PALABRA_CLAVE_DESC
+    PALABRA_CLAVE_DROP
+    PALABRA_CLAVE_EXISTS
+    PALABRA_CLAVE_FOREIGN
+    PALABRA_CLAVE_FROM
+    PALABRA_CLAVE_FULL
+    PALABRA_CLAVE_GROUP_BY
+    PALABRA_CLAVE_HAVING
+    PALABRA_CLAVE_IN
+    PALABRA_CLAVE_INNER
+    PALABRA_CLAVE_INSERT
+    PALABRA_CLAVE_INTO
+    PALABRA_CLAVE_JOIN
+    PALABRA_CLAVE_KEY
+    PALABRA_CLAVE_LEFT
+    PALABRA_CLAVE_LIKE
+    PALABRA_CLAVE_LIMIT
+    PALABRA_CLAVE_NOT
+    PALABRA_CLAVE_NULL
+    PALABRA_CLAVE_ON
+    PALABRA_CLAVE_PRIMARY
+    PALABRA_CLAVE_RIGHT
+    PALABRA_CLAVE_SET
+    PALABRA_CLAVE_TABLE
+    PALABRA_CLAVE_TRUNCATE
+    PALABRA_CLAVE_UNION
+    PALABRA_CLAVE_UPDATE
+    PALABRA_CLAVE_USE
+    PALABRA_CLAVE_VALUES
+    PALABRA_CLAVE_WHERE
+    TEXT
+    TIMESTAMP
+    TINYINT
+    TIPO_DATO
+    VARCHAR
+
+Grammar
+
+Rule 0     S' -> Inicio_consultas
+Rule 1     Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio_funciones
+Rule 2     Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio
+Rule 3     Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual
+Rule 4     select_intermedio_funciones -> columnas
+Rule 5     select_intermedio_funciones -> columnas COMA Funcion_agregada
+Rule 6     Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expresion PAR_DER
+Rule 7     Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expresion PAR_DER
+Rule 8     Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expresion PAR_DER
+Rule 9     Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expresion PAR_DER
+Rule 10    Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expresion PAR_DER
+Rule 11    expresion -> ID
+Rule 12    expresion -> valores
+Rule 13    expresion -> ID OPERADOR expresion
+Rule 14    expresion -> valores OPERADOR expresion
+Rule 15    select_intermedio -> columnas
+Rule 16    select_individual -> valores
+Rule 17    select_individual -> valores COMA valores
+Rule 18    valores -> DATE
+Rule 19    valores -> NUMERO_ENTERO
+Rule 20    valores -> NUMERO_DECIMAL
+Rule 21    valores -> CADENA
+Rule 22    columnas -> ID
+Rule 23    columnas -> valores
+Rule 24    columnas -> ID COMA columnas
+Rule 25    columnas -> valores COMA columnas
+
+Terminals, with rules where they appear
+
+CADENA               : 21
+COMA                 : 5 17 24 25
+COMPARADOR           : 
+DATE                 : 18
+DATETIME             : 
+DOUBLE               : 
+FINAL                : 
+ID                   : 11 13 22 24
+IGUAL                : 
+INT                  : 
+NUEVA_LINEA          : 
+NUMERO_DECIMAL       : 20
+NUMERO_ENTERO        : 19
+OPERADOR             : 13 14
+PALABRA_CLAVE_ALTER  : 
+PALABRA_CLAVE_AND    : 
+PALABRA_CLAVE_AS     : 
+PALABRA_CLAVE_ASC    : 
+PALABRA_CLAVE_AVG    : 6
+PALABRA_CLAVE_BETWEEN : 
+PALABRA_CLAVE_COUNT  : 9
+PALABRA_CLAVE_CREATE : 
+PALABRA_CLAVE_DATABASE : 
+PALABRA_CLAVE_DELETE : 
+PALABRA_CLAVE_DESC   : 
+PALABRA_CLAVE_DROP   : 
+PALABRA_CLAVE_EXISTS : 
+PALABRA_CLAVE_FOREIGN : 
+PALABRA_CLAVE_FROM   : 
+PALABRA_CLAVE_FULL   : 
+PALABRA_CLAVE_GROUP_BY : 
+PALABRA_CLAVE_HAVING : 
+PALABRA_CLAVE_IN     : 
+PALABRA_CLAVE_INNER  : 
+PALABRA_CLAVE_INSERT : 
+PALABRA_CLAVE_INTO   : 
+PALABRA_CLAVE_JOIN   : 
+PALABRA_CLAVE_KEY    : 
+PALABRA_CLAVE_LEFT   : 
+PALABRA_CLAVE_LIKE   : 
+PALABRA_CLAVE_LIMIT  : 
+PALABRA_CLAVE_MAX    : 7
+PALABRA_CLAVE_MIN    : 8
+PALABRA_CLAVE_NOT    : 
+PALABRA_CLAVE_NULL   : 
+PALABRA_CLAVE_ON     : 
+PALABRA_CLAVE_PRIMARY : 
+PALABRA_CLAVE_RIGHT  : 
+PALABRA_CLAVE_SELECT : 1 2 3
+PALABRA_CLAVE_SET    : 
+PALABRA_CLAVE_SUM    : 10
+PALABRA_CLAVE_TABLE  : 
+PALABRA_CLAVE_TRUNCATE : 
+PALABRA_CLAVE_UNION  : 
+PALABRA_CLAVE_UPDATE : 
+PALABRA_CLAVE_USE    : 
+PALABRA_CLAVE_VALUES : 
+PALABRA_CLAVE_WHERE  : 
+PAR_DER              : 6 7 8 9 10
+PAR_IZQ              : 6 7 8 9 10
+TEXT                 : 
+TIMESTAMP            : 
+TINYINT              : 
+TIPO_DATO            : 
+VARCHAR              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+Funcion_agregada     : 5
+Inicio_consultas     : 0
+columnas             : 4 5 15 24 25
+expresion            : 6 7 8 9 10 13 14
+select_individual    : 3
+select_intermedio    : 2
+select_intermedio_funciones : 1
+valores              : 12 14 16 17 17 23 25
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Inicio_consultas
+    (1) Inicio_consultas -> . PALABRA_CLAVE_SELECT select_intermedio_funciones
+    (2) Inicio_consultas -> . PALABRA_CLAVE_SELECT select_intermedio
+    (3) Inicio_consultas -> . PALABRA_CLAVE_SELECT select_individual
+
+    PALABRA_CLAVE_SELECT shift and go to state 2
+
+    Inicio_consultas               shift and go to state 1
+
+state 1
+
+    (0) S' -> Inicio_consultas .
+
+
+
+state 2
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT . select_intermedio_funciones
+    (2) Inicio_consultas -> PALABRA_CLAVE_SELECT . select_intermedio
+    (3) Inicio_consultas -> PALABRA_CLAVE_SELECT . select_individual
+    (4) select_intermedio_funciones -> . columnas
+    (5) select_intermedio_funciones -> . columnas COMA Funcion_agregada
+    (15) select_intermedio -> . columnas
+    (16) select_individual -> . valores
+    (17) select_individual -> . valores COMA valores
+    (22) columnas -> . ID
+    (23) columnas -> . valores
+    (24) columnas -> . ID COMA columnas
+    (25) columnas -> . valores COMA columnas
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 8
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    select_intermedio_funciones    shift and go to state 3
+    select_intermedio              shift and go to state 4
+    select_individual              shift and go to state 5
+    columnas                       shift and go to state 6
+    valores                        shift and go to state 7
+
+state 3
+
+    (1) Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio_funciones .
+
+    $end            reduce using rule 1 (Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio_funciones .)
+
+
+state 4
+
+    (2) Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio .
+
+    $end            reduce using rule 2 (Inicio_consultas -> PALABRA_CLAVE_SELECT select_intermedio .)
+
+
+state 5
+
+    (3) Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual .
+
+    $end            reduce using rule 3 (Inicio_consultas -> PALABRA_CLAVE_SELECT select_individual .)
+
+
+state 6
+
+    (4) select_intermedio_funciones -> columnas .
+    (5) select_intermedio_funciones -> columnas . COMA Funcion_agregada
+    (15) select_intermedio -> columnas .
+
+  ! reduce/reduce conflict for $end resolved using rule 4 (select_intermedio_funciones -> columnas .)
+    $end            reduce using rule 4 (select_intermedio_funciones -> columnas .)
+    COMA            shift and go to state 13
+
+  ! $end            [ reduce using rule 15 (select_intermedio -> columnas .) ]
+
+
+state 7
+
+    (16) select_individual -> valores .
+    (17) select_individual -> valores . COMA valores
+    (23) columnas -> valores .
+    (25) columnas -> valores . COMA columnas
+
+  ! shift/reduce conflict for COMA resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 16 (select_individual -> valores .)
+    $end            reduce using rule 16 (select_individual -> valores .)
+    COMA            shift and go to state 14
+
+  ! COMA            [ reduce using rule 23 (columnas -> valores .) ]
+  ! $end            [ reduce using rule 23 (columnas -> valores .) ]
+
+
+state 8
+
+    (22) columnas -> ID .
+    (24) columnas -> ID . COMA columnas
+
+  ! shift/reduce conflict for COMA resolved as shift
+    $end            reduce using rule 22 (columnas -> ID .)
+    COMA            shift and go to state 15
+
+  ! COMA            [ reduce using rule 22 (columnas -> ID .) ]
+
+
+state 9
+
+    (18) valores -> DATE .
+
+    COMA            reduce using rule 18 (valores -> DATE .)
+    $end            reduce using rule 18 (valores -> DATE .)
+    OPERADOR        reduce using rule 18 (valores -> DATE .)
+    PAR_DER         reduce using rule 18 (valores -> DATE .)
+
+
+state 10
+
+    (19) valores -> NUMERO_ENTERO .
+
+    COMA            reduce using rule 19 (valores -> NUMERO_ENTERO .)
+    $end            reduce using rule 19 (valores -> NUMERO_ENTERO .)
+    OPERADOR        reduce using rule 19 (valores -> NUMERO_ENTERO .)
+    PAR_DER         reduce using rule 19 (valores -> NUMERO_ENTERO .)
+
+
+state 11
+
+    (20) valores -> NUMERO_DECIMAL .
+
+    COMA            reduce using rule 20 (valores -> NUMERO_DECIMAL .)
+    $end            reduce using rule 20 (valores -> NUMERO_DECIMAL .)
+    OPERADOR        reduce using rule 20 (valores -> NUMERO_DECIMAL .)
+    PAR_DER         reduce using rule 20 (valores -> NUMERO_DECIMAL .)
+
+
+state 12
+
+    (21) valores -> CADENA .
+
+    COMA            reduce using rule 21 (valores -> CADENA .)
+    $end            reduce using rule 21 (valores -> CADENA .)
+    OPERADOR        reduce using rule 21 (valores -> CADENA .)
+    PAR_DER         reduce using rule 21 (valores -> CADENA .)
+
+
+state 13
+
+    (5) select_intermedio_funciones -> columnas COMA . Funcion_agregada
+    (6) Funcion_agregada -> . PALABRA_CLAVE_AVG PAR_IZQ expresion PAR_DER
+    (7) Funcion_agregada -> . PALABRA_CLAVE_MAX PAR_IZQ expresion PAR_DER
+    (8) Funcion_agregada -> . PALABRA_CLAVE_MIN PAR_IZQ expresion PAR_DER
+    (9) Funcion_agregada -> . PALABRA_CLAVE_COUNT PAR_IZQ expresion PAR_DER
+    (10) Funcion_agregada -> . PALABRA_CLAVE_SUM PAR_IZQ expresion PAR_DER
+
+    PALABRA_CLAVE_AVG shift and go to state 17
+    PALABRA_CLAVE_MAX shift and go to state 18
+    PALABRA_CLAVE_MIN shift and go to state 19
+    PALABRA_CLAVE_COUNT shift and go to state 20
+    PALABRA_CLAVE_SUM shift and go to state 21
+
+    Funcion_agregada               shift and go to state 16
+
+state 14
+
+    (17) select_individual -> valores COMA . valores
+    (25) columnas -> valores COMA . columnas
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+    (22) columnas -> . ID
+    (23) columnas -> . valores
+    (24) columnas -> . ID COMA columnas
+    (25) columnas -> . valores COMA columnas
+
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+    ID              shift and go to state 8
+
+    valores                        shift and go to state 22
+    columnas                       shift and go to state 23
+
+state 15
+
+    (24) columnas -> ID COMA . columnas
+    (22) columnas -> . ID
+    (23) columnas -> . valores
+    (24) columnas -> . ID COMA columnas
+    (25) columnas -> . valores COMA columnas
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 8
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    columnas                       shift and go to state 24
+    valores                        shift and go to state 25
+
+state 16
+
+    (5) select_intermedio_funciones -> columnas COMA Funcion_agregada .
+
+    $end            reduce using rule 5 (select_intermedio_funciones -> columnas COMA Funcion_agregada .)
+
+
+state 17
+
+    (6) Funcion_agregada -> PALABRA_CLAVE_AVG . PAR_IZQ expresion PAR_DER
+
+    PAR_IZQ         shift and go to state 26
+
+
+state 18
+
+    (7) Funcion_agregada -> PALABRA_CLAVE_MAX . PAR_IZQ expresion PAR_DER
+
+    PAR_IZQ         shift and go to state 27
+
+
+state 19
+
+    (8) Funcion_agregada -> PALABRA_CLAVE_MIN . PAR_IZQ expresion PAR_DER
+
+    PAR_IZQ         shift and go to state 28
+
+
+state 20
+
+    (9) Funcion_agregada -> PALABRA_CLAVE_COUNT . PAR_IZQ expresion PAR_DER
+
+    PAR_IZQ         shift and go to state 29
+
+
+state 21
+
+    (10) Funcion_agregada -> PALABRA_CLAVE_SUM . PAR_IZQ expresion PAR_DER
+
+    PAR_IZQ         shift and go to state 30
+
+
+state 22
+
+    (17) select_individual -> valores COMA valores .
+    (23) columnas -> valores .
+    (25) columnas -> valores . COMA columnas
+
+  ! reduce/reduce conflict for $end resolved using rule 17 (select_individual -> valores COMA valores .)
+  ! shift/reduce conflict for COMA resolved as shift
+    $end            reduce using rule 17 (select_individual -> valores COMA valores .)
+    COMA            shift and go to state 31
+
+  ! COMA            [ reduce using rule 23 (columnas -> valores .) ]
+  ! $end            [ reduce using rule 23 (columnas -> valores .) ]
+
+
+state 23
+
+    (25) columnas -> valores COMA columnas .
+
+    COMA            reduce using rule 25 (columnas -> valores COMA columnas .)
+    $end            reduce using rule 25 (columnas -> valores COMA columnas .)
+
+
+state 24
+
+    (24) columnas -> ID COMA columnas .
+
+    COMA            reduce using rule 24 (columnas -> ID COMA columnas .)
+    $end            reduce using rule 24 (columnas -> ID COMA columnas .)
+
+
+state 25
+
+    (23) columnas -> valores .
+    (25) columnas -> valores . COMA columnas
+
+  ! shift/reduce conflict for COMA resolved as shift
+    $end            reduce using rule 23 (columnas -> valores .)
+    COMA            shift and go to state 31
+
+  ! COMA            [ reduce using rule 23 (columnas -> valores .) ]
+
+
+state 26
+
+    (6) Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ . expresion PAR_DER
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 32
+    valores                        shift and go to state 34
+
+state 27
+
+    (7) Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ . expresion PAR_DER
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 35
+    valores                        shift and go to state 34
+
+state 28
+
+    (8) Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ . expresion PAR_DER
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 36
+    valores                        shift and go to state 34
+
+state 29
+
+    (9) Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ . expresion PAR_DER
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 37
+    valores                        shift and go to state 34
+
+state 30
+
+    (10) Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ . expresion PAR_DER
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 38
+    valores                        shift and go to state 34
+
+state 31
+
+    (25) columnas -> valores COMA . columnas
+    (22) columnas -> . ID
+    (23) columnas -> . valores
+    (24) columnas -> . ID COMA columnas
+    (25) columnas -> . valores COMA columnas
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 8
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    valores                        shift and go to state 25
+    columnas                       shift and go to state 23
+
+state 32
+
+    (6) Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expresion . PAR_DER
+
+    PAR_DER         shift and go to state 39
+
+
+state 33
+
+    (11) expresion -> ID .
+    (13) expresion -> ID . OPERADOR expresion
+
+    PAR_DER         reduce using rule 11 (expresion -> ID .)
+    OPERADOR        shift and go to state 40
+
+
+state 34
+
+    (12) expresion -> valores .
+    (14) expresion -> valores . OPERADOR expresion
+
+    PAR_DER         reduce using rule 12 (expresion -> valores .)
+    OPERADOR        shift and go to state 41
+
+
+state 35
+
+    (7) Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expresion . PAR_DER
+
+    PAR_DER         shift and go to state 42
+
+
+state 36
+
+    (8) Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expresion . PAR_DER
+
+    PAR_DER         shift and go to state 43
+
+
+state 37
+
+    (9) Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expresion . PAR_DER
+
+    PAR_DER         shift and go to state 44
+
+
+state 38
+
+    (10) Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expresion . PAR_DER
+
+    PAR_DER         shift and go to state 45
+
+
+state 39
+
+    (6) Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expresion PAR_DER .
+
+    $end            reduce using rule 6 (Funcion_agregada -> PALABRA_CLAVE_AVG PAR_IZQ expresion PAR_DER .)
+
+
+state 40
+
+    (13) expresion -> ID OPERADOR . expresion
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expresion                      shift and go to state 46
+    valores                        shift and go to state 34
+
+state 41
+
+    (14) expresion -> valores OPERADOR . expresion
+    (11) expresion -> . ID
+    (12) expresion -> . valores
+    (13) expresion -> . ID OPERADOR expresion
+    (14) expresion -> . valores OPERADOR expresion
+    (18) valores -> . DATE
+    (19) valores -> . NUMERO_ENTERO
+    (20) valores -> . NUMERO_DECIMAL
+    (21) valores -> . CADENA
+
+    ID              shift and go to state 33
+    DATE            shift and go to state 9
+    NUMERO_ENTERO   shift and go to state 10
+    NUMERO_DECIMAL  shift and go to state 11
+    CADENA          shift and go to state 12
+
+    valores                        shift and go to state 34
+    expresion                      shift and go to state 47
+
+state 42
+
+    (7) Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expresion PAR_DER .
+
+    $end            reduce using rule 7 (Funcion_agregada -> PALABRA_CLAVE_MAX PAR_IZQ expresion PAR_DER .)
+
+
+state 43
+
+    (8) Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expresion PAR_DER .
+
+    $end            reduce using rule 8 (Funcion_agregada -> PALABRA_CLAVE_MIN PAR_IZQ expresion PAR_DER .)
+
+
+state 44
+
+    (9) Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expresion PAR_DER .
+
+    $end            reduce using rule 9 (Funcion_agregada -> PALABRA_CLAVE_COUNT PAR_IZQ expresion PAR_DER .)
+
+
+state 45
+
+    (10) Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expresion PAR_DER .
+
+    $end            reduce using rule 10 (Funcion_agregada -> PALABRA_CLAVE_SUM PAR_IZQ expresion PAR_DER .)
+
+
+state 46
+
+    (13) expresion -> ID OPERADOR expresion .
+
+    PAR_DER         reduce using rule 13 (expresion -> ID OPERADOR expresion .)
+
+
+state 47
+
+    (14) expresion -> valores OPERADOR expresion .
+
+    PAR_DER         reduce using rule 14 (expresion -> valores OPERADOR expresion .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for COMA in state 7 resolved as shift
+WARNING: shift/reduce conflict for COMA in state 8 resolved as shift
+WARNING: shift/reduce conflict for COMA in state 22 resolved as shift
+WARNING: shift/reduce conflict for COMA in state 25 resolved as shift
+WARNING: reduce/reduce conflict in state 6 resolved using rule (select_intermedio_funciones -> columnas)
+WARNING: rejected rule (select_intermedio -> columnas) in state 6
+WARNING: reduce/reduce conflict in state 7 resolved using rule (select_individual -> valores)
+WARNING: rejected rule (columnas -> valores) in state 7
+WARNING: reduce/reduce conflict in state 22 resolved using rule (select_individual -> valores COMA valores)
+WARNING: rejected rule (columnas -> valores) in state 22
+WARNING: Rule (select_intermedio -> columnas) is never reduced
