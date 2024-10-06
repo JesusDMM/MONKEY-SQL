@@ -62,7 +62,7 @@ li a {
 
 /* Estilos generales ------------------------------------------- */
 body {
-  background-image: url("../../img/background.png"); /* Ruta a tu imagen de fondo */
+  background-image: url("../../img/Grupo\ 2.png"); /* Ruta a tu imagen de fondo */
   font-family: Arial, sans-serif;
   background-color: #282143;
   color: #fff;
@@ -82,16 +82,41 @@ main {
   width: 90%;
   max-width: 900px;
   align-items: flex-end;
+  flex: 2;
+  margin-left: 420px;
 }
-
 .input-container,
 .output-container {
-  height: 300px; /* Aumenta la altura del textarea */
-  margin-bottom: 20px;
   background-color: #f0f0f5;
+  color: #333;
+  border: 2px solid #72efdd;
   border-radius: 8px;
   padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
+  height: auto; /* Ajuste dinámico según contenido */
+  min-height: 150px; /* Altura mínima */
+}
+
+textarea {
+  width: 100%;
+  height: auto; /* Ajusta la altura automáticamente */
+  min-height: 150px; /* Altura mínima del textarea */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
   color: #333;
+  resize: vertical; /* Permite cambiar el tamaño verticalmente */
+}
+
+#output {
+  min-height: 100px; /* Altura mínima */
+  height: auto; /* Ajuste dinámico según contenido */
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 label {
