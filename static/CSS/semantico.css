@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  padding: 10px 0;
+  align-items: flex-start;
+}
+
+.rounded-header {
+  background-color: rgba(134,
+      114,
+      149,
+      0.5);
+  /* Color #867295 con 50% de transparencia */
+  border-radius: 20px;
+  padding: 25px 10px;
+  /* Reduce el padding */
+  margin: 20px auto 10px auto;
+  width: 110%;
+  /* Controla el ancho del header */
+  max-width: 1200px;
+  /* Ancho máximo del header */
+}
+
+.title {
+  font-family: "Consolas", monospace;
+  font-size: 26px;
+  font-weight: normal;
+  color: white;
+}
+
+.sql {
+  color: #ff5e00;
+  /* Color diferente para "SQL" */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  /* Distribuye los elementos */
+  padding: 0;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+li a {
+  font-family: "Consolas", monospace;
+  font-size: 26px;
+}
+
+/* Estilos generales ------------------------------------------- */
+body {
+  background-image: url("../img/Grupo 2.png");
+  /* Ruta a tu imagen de fondo */
+  font-family: Arial, sans-serif;
+  background-color: #282143;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container img {
+  align-items: start;
+  max-width: 200px;
+  /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto;
+}
+
+main {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 900px;
+  align-items: flex-end;
+  flex: 2;
+  margin-left: 420px;
+}
+
+.input-container,
+.output-container {
+  background-color: #f0f0f5;
+  color: #333;
+  border: 2px solid #72efdd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
+  height: auto;
+  /* Ajuste dinámico según contenido */
+  min-height: 150px;
+  /* Altura mínima */
+}
+
+textarea {
+  width: 100%;
+  height: auto;
+  /* Ajusta la altura automáticamente */
+  min-height: 150px;
+  /* Altura mínima del textarea */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  resize: vertical;
+  /* Permite cambiar el tamaño verticalmente */
+}
+
+#output {
+  min-height: 100px;
+  /* Altura mínima */
+  height: auto;
+  /* Ajuste dinámico según contenido */
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+button {
+  background-color: #00b37e;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #009e6f;
+}
+
+#output {
+  min-height: 100px;
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Tablas estilos */
+/* Estilos para los contenedores de input y output */
+.input-container,
+.output-container {
+  border: 2px solid #72efdd;
+  /* Borde azul alrededor de los contenedores */
+  padding: 10px;
+  /* Espaciado interno */
+  margin-bottom: 20px;
+  /* Espaciado inferior entre contenedores */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
+  /* Efecto neón */
+}
+
+/* Estilos adicionales para el textarea y el botón */
+
+button#run-btn:hover {
+  background-color: darkblue;
+  box-shadow: 0 0 10px darkblue, 0 0 20px darkblue, 0 0 30px darkblue;
+  /* Efecto neón */
+}
+
+/* estilos de boton */
+
+/* From Uiverse.io by Yaya12085 */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  border: none;
+  background: #0ba360;
+  background: linear-gradient(to right, #5390d9, #4ea8de);
+  color: white;
+  font-family: inherit;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0px 14px 56px -11px #0ba360;
+  width: 13em;
+  padding: 0.7em;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.button svg {
+  width: 25px;
+  height: 25px;
+}
+
+.button svg path {
+  fill: white;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+
+.button span:after {
+  content: "Semantic";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.7s;
+  color: #ffffff;
+}
+
+.button:hover span {
+  padding-right: 4.5em;
+}
+
+.button:hover span:after {
+  opacity: 4;
+  right: 0;
+}
