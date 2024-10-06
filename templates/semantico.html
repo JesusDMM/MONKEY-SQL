@@ -35,7 +35,7 @@
           placeholder="-- Escribe tu consulta SQL aquí..."
         ></textarea>
 
-        <button class="button">
+        <button class="button" id="boton_consulta">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -59,8 +59,10 @@
 
       <div class="output-container">
         <label for="output">Output</label>
-        <textarea id="sql-input" placeholder="Output"></textarea>
+        <textarea id="sql-output" placeholder="Output"></textarea>
       </div>
+
+      <script src="{{ url_for('static', filename='js/compilador.js') }}"></script>
     </main>
   </body>
 </html>
