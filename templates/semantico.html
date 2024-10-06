@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MonkeySQL</title>
-    <link rel="stylesheet" href="../static/CSS/semantico.css" />
-    <link rel="icon" href="../img/monkeysql-icono.png" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/semantico.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='img/monkeysql-icono.png') }}" type="image/x-icon" />
   </head>
 
   <body>
@@ -15,7 +15,7 @@
           <li>
             <span class="title">Monkey/<span class="sql">SQL</span>/></span>
           </li>
-          <li><a href="#">Home</a></li>
+          <li><a href="{{ url_for('principal') }}">Home</a></li>
           <li><a href="#">Lexer</a></li>
           <li><a href="#">Semantic</a></li>
           <li><a href="#">Compiler</a></li>

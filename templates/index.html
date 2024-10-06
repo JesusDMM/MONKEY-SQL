@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MonkeySQL</title>
-    <link rel="stylesheet" href="../static/CSS/index.css" />
-    <link rel="icon" href="../img/monkeysql-icono.png" type="image/x-icon" />
+    <link rel="icon" href="{{ url_for('static', filename='img/monkeysql-icono.png') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}">
   </head>
   <body>
     <header class="rounded-header">
@@ -14,10 +14,10 @@
           <li>
             <span class="title">Monkey/<span class="sql">SQL</span>/></span>
           </li>
-          <li><a href="#">Home</a></li>
+          <li><a href="#"></a>Home</a></li>
           <li><a href="#">Lexer</a></li>
           <li><a href="#">Sintactic</a></li>
-          <li><a href="#">Compiler</a></li>
+          <li><a href="{{ url_for('semantico') }}">Compiler</a></li>
         </ul>
       </nav>
     </header>
@@ -36,7 +36,7 @@
         </p>
       </div>
       <div class="hero-image">
-        <img src="../img/chhanguillo.png" alt="Monkey working on computer" />
+        <img src="{{ url_for('static', filename='img/chhanguillo.png') }}" alt="Monkey working on computer" />
       </div>
     </section>
   </body>

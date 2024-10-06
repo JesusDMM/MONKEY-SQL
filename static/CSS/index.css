@@ -25,7 +25,8 @@ header {
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-around; /* Distribuye los elementos */
+  justify-content: space-around;
+  /* Distribuye los elementos */
   padding: 0;
   align-items: center;
 }
@@ -58,7 +59,8 @@ li a {
 }
 
 .sql {
-  color: #ff5e00; /* Color diferente para "SQL" */
+  color: #ff5e00;
+  /* Color diferente para "SQL" */
 }
 
 /* Sección hero */
@@ -93,7 +95,8 @@ li a {
 }
 
 body {
-  background-image: url("../../img/background.png"); /* Ruta a tu imagen de fondo */
+  background-image: url("../img/background.png");
+  /* Ruta a tu imagen de fondo */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -101,15 +104,17 @@ body {
 
 /* Estilos para el header con bordes redondeados y fondo transparente */
 .rounded-header {
-  background-color: rgba(
-    134,
-    114,
-    149,
-    0.5
-  ); /* Color #867295 con 50% de transparencia */
+  background-color: rgba(134,
+      114,
+      149,
+      0.5);
+  /* Color #867295 con 50% de transparencia */
   border-radius: 10px;
-  padding: 5px 10px; /* Reduce el padding */
+  padding: 5px 10px;
+  /* Reduce el padding */
   margin: 20px auto 10px auto;
-  width: 110%; /* Controla el ancho del header */
-  max-width: 1200px; /* Ancho máximo del header */
+  width: 110%;
+  /* Controla el ancho del header */
+  max-width: 1200px;
+  /* Ancho máximo del header */
 }
