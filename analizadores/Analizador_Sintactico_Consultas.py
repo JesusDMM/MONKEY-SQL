@@ -1,4 +1,4 @@
-import ply.yacc as yacc
+import ply.yacc as yacc # type: ignore
 from analizador_lexico import tokens, posiciones
 
 global errores_programas
