@@ -2,11 +2,14 @@ from flask import Flask, render_template, request, jsonify
 from analizadores.analizador_lexico import *
 from analizadores.Analizador_Sintactico_Consultas import *
 from analizadores.analizador_semantico import AnalizadorSemantico
+from database.main import *
 
 app = Flask(__name__, static_folder='static')
 
+global base
+
 def formatear_arbol(arbol, indent=0):
-    espacio = '    '
+    espacio = ''
     resultado = []
 
     for elemento in arbol:
@@ -24,6 +27,11 @@ def formatear_arbol(arbol, indent=0):
 
 @app.route("/")
 def principal():
+    conexion_bd = conexion('escuela')
+    estructura = obtener_estructura_bd(conexion_bd)
+    global base
+    base = estructura
+    print(base)
     return render_template('index.html')
 
 @app.route('/semantico')
@@ -52,6 +60,7 @@ def analizador_lexico():
     )
     
     arbol, errores_sintacticos = analizar_consulta(consulta)
+    print(arbol)
     
     if len(errores_sintacticos) > 0:
         return jsonify({'Error': errores_formateados,
@@ -59,7 +68,9 @@ def analizador_lexico():
 
     arbol_formateado = formatear_arbol(arbol)
     
-    analizador_semantico = AnalizadorSemantico()
+    global base
+    
+    analizador_semantico = AnalizadorSemantico(base)
     
     analizador_semantico.analizar(arbol)
     
