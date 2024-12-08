@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MonkeySQL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/semantico.css') }}" />
-    <link rel="icon" href="{{ url_for('static', filename='img/monkeysql-icono.png') }}" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/semantico.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/monkeysql-icono.png') }}"
+      type="image/x-icon"
+    />
   </head>
-
   <body>
     <header class="rounded-header">
       <nav>
@@ -27,7 +33,6 @@
     <div class="image-container">
       <img src="../img/monkey neon 2.png" alt="Descripción de la imagen" />
     </div> -->
-
     <main>
       <div class="input-container">
         <label for="sql-input">Input</label>
@@ -35,7 +40,6 @@
           id="sql-input"
           placeholder="-- Escribe tu consulta SQL aquí..."
         ></textarea>
-
         <button class="button" id="boton_consulta">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,12 +61,10 @@
           <span>Run it</span>
         </button>
       </div>
-
       <div class="output-container">
         <label for="output">Output</label>
         <textarea id="sql-output" placeholder="Output"></textarea>
       </div>
-
       <script src="{{ url_for('static', filename='js/compilador.js') }}"></script>
     </main>
   </body>
