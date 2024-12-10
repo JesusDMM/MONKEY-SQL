@@ -64,7 +64,7 @@ li a {
 
 /* Estilos generales ------------------------------------------- */
 body {
-  background-image: url("../img/Grupo 2.png");
+  background-image: url("../img/background.png");
   /* Ruta a tu imagen de fondo */
   font-family: Arial, sans-serif;
   background-color: #282143;
@@ -80,14 +80,52 @@ body {
   /* Ajusta el tamaño de la imagen según sea necesario */
   height: auto;
 }
-
 main {
-  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
   width: 90%;
-  max-width: 900px;
-  align-items: flex-end;
-  flex: 2;
-  margin-left: 420px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.left-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.right-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.table-container {
+  background-color: #f0f0f5;
+  color: #333;
+  border: 2px solid #72efdd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
+  width: 100%;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #72efdd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table-container th {
+  background-color: #72efdd;
+  color: #fff;
 }
 
 .input-container,
@@ -97,14 +135,9 @@ main {
   border: 2px solid #72efdd;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
   box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
-  height: auto;
-  /* Ajuste dinámico según contenido */
-  min-height: 150px;
-  /* Altura mínima */
+  width: 100%;
 }
-
 textarea {
   width: 100%;
   height: auto;

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MonkeySQL</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/semantico.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/monkeysql-icono.png') }}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header class="rounded-header">
+      <nav>
+        <ul>
+          <li>
+            <span class="title">Monkey/<span class="sql">SQL</span>/></span>
+          </li>
+          <li><a href="{{ url_for('principal') }}">Home</a></li>
+          <li><a href="#">Lexer</a></li>
+          <li><a href="#">Sintactic</a></li>
+          <li><a href="#">Semantic</a></li>
+          <li><a href="#">Compiler</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- 
+    <div class="image-container">
+      <img src="../img/monkey neon 2.png" alt="Descripción de la imagen" />
+    </div> -->
+    <main>
+      <main>
+        <div class="left-container">
+          <div class="table-container">
+            <label for="sql-table">Tabla de Ejemplo</label>
+            <table>
+              <thead>
+                <tr>
+                  <th>Columna 1</th>
+                  <th>Columna 2</th>
+                  <th>Columna 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dato 1</td>
+                  <td>Dato 2</td>
+                  <td>Dato 3</td>
+                </tr>
+                <tr>
+                  <td>Dato 4</td>
+                  <td>Dato 5</td>
+                  <td>Dato 6</td>
+                </tr>
+                <tr>
+                  <td>Dato 4</td>
+                  <td>Dato 5</td>
+                  <td>Dato 6</td>
+                </tr>
+                <tr>
+                  <td>Dato 4</td>
+                  <td>Dato 5</td>
+                  <td>Dato 6</td>
+                </tr>
+                <tr>
+                  <td>Dato 4</td>
+                  <td>Dato 5</td>
+                  <td>Dato 6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="right-container">
+          <div class="input-container">
+            <label for="sql-input">Input</label>
+            <textarea
+              id="sql-input"
+              placeholder="-- Escribe tu consulta SQL aquí..."
+            ></textarea>
+            <button class="button" id="boton_consulta">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                <g
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  id="SVGRepo_tracerCarrier"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M8 5v14l11-7-11-7z" fill="currentColor"></path>
+                </g>
+              </svg>
+              <span>Run it</span>
+            </button>
+          </div>
+          <div class="output-container">
+            <label for="output">Output</label>
+            <textarea id="sql-output" placeholder="Output"></textarea>
+          </div>
+        </div>
+      </main>
+    </main>
+  </body>
+</html>
