@@ -206,18 +206,30 @@ button:hover {
 
 /* Tablas estilos */
 /* Estilos para los contenedores de input y output */
-.input-container,
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  grid-template-rows: auto auto; /* Filas ajustables */
+  gap: 20px; /* Espacio entre elementos */
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.input-container {
+  grid-column: 1; /* Columna 1 */
+  grid-row: 1; /* Primera fila */
+}
+
 .output-container {
-  border: 2px solid #72efdd;
-  /* Borde azul alrededor de los contenedores */
-  padding: 10px;
-  /* Espaciado interno */
-  margin-bottom: 20px;
-  /* Espaciado inferior entre contenedores */
-  border-radius: 5px;
-  /* Bordes redondeados */
-  box-shadow: 0 0 10px #72efdd, 0 0 20px #72efdd, 0 0 30px #72efdd;
-  /* Efecto neón */
+  grid-column: 2; /* Columna 2 */
+  grid-row: 1; /* Primera fila */
+}
+
+.table-container {
+  grid-column: 1 / span 2; /* Ocupa ambas columnas */
+  grid-row: 2; /* Segunda fila */
+  margin-top: 20px;
 }
 
 /* Estilos adicionales para el textarea y el botón */
