@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MonkeySQL</title>
-    <link rel="stylesheet" href="/static/CSS/otroenblanco.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/otroenblanco.css') }}" />
     <link
       rel="icon"
       href="{{ url_for('static', filename='img/monkeysql-icono.png') }}"
@@ -21,7 +21,7 @@
           <li><a href="{{ url_for('principal') }}">Home</a></li>
           <li><a href="#">Lexer</a></li>
           <li><a href="#">Sintactic</a></li>
-          <li><a href="#">Semantic</a></li>
+          <li><a href="{{ url_for('semantico') }}">Semantic</a></li>
           <li><a href="#">Compiler</a></li>
         </ul>
       </nav>
@@ -56,29 +56,21 @@
       </div>
 
       <div class="table-container">
-        <label for="sql-table">Tabla de Ejemplo</label>
+        <label for="sql-table">Tabla</label>
         <table>
           <thead>
             <tr>
-              <th>Columna 1</th>
-              <th>Columna 2</th>
-              <th>Columna 3</th>
+              
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Dato 1</td>
-              <td>Dato 2</td>
-              <td>Dato 3</td>
-            </tr>
-            <tr>
-              <td>Dato 4</td>
-              <td>Dato 5</td>
-              <td>Dato 6</td>
+              
             </tr>
           </tbody>
         </table>
       </div>
     </main>
+    <script src="{{ url_for('static', filename='js/compilador.js') }}"></script>
   </body>
 </html>

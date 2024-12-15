@@ -7,6 +7,7 @@ from database.main import *
 app = Flask(__name__, static_folder='static')
 
 global base
+global con
 
 def formatear_arbol(arbol, indent=0):
     espacio = ''
@@ -25,18 +26,43 @@ def formatear_arbol(arbol, indent=0):
     return '\n'.join(resultado)
 
 
-@app.route("/")
+@app.route("/inicio")
 def principal():
-    conexion_bd = conexion('escuela')
-    estructura = obtener_estructura_bd(conexion_bd)
-    global base
-    base = estructura
-    print(base)
     return render_template('index.html')
+
+@app.route("/bd", methods=['POST'])
+def bd():
+    data = request.get_json()
+    print(data)  
+    
+    direccion = data.get('direccion')
+    usuario = data.get('usuario')
+    contra = data.get('contra')
+    bd = data.get('database')
+    
+    conexion_bd, bandera, error = conexion(direccion, usuario, contra, bd)
+    
+    if bandera:
+        estructura = obtener_estructura_bd(conexion_bd)
+        global base, con
+        con = conexion_bd
+        base = estructura
+        print(base)
+        return jsonify({'Mensaje': 'Todo bien'})
+    else:
+        return jsonify({'Error': error})
 
 @app.route('/semantico')
 def semantico():
     return render_template('semantico.html') 
+
+@app.route('/compilador')
+def compilador():
+    return render_template('otroenblanco.html') 
+
+@app.route('/')
+def login():
+    return render_template('login.html') 
 
 @app.route('/api/v1/analizador_lexico', methods=['POST'])
 def analizador_lexico():
@@ -68,7 +94,7 @@ def analizador_lexico():
 
     arbol_formateado = formatear_arbol(arbol)
     
-    global base
+    global base, con
     
     analizador_semantico = AnalizadorSemantico(base)
     
@@ -80,13 +106,18 @@ def analizador_lexico():
         return jsonify({'Error': errores_formateados,
                         'Error_sintactico': errores_sintacticos,
                         'Error_semantico': errores_semanticos}), 200
-
+    
+    info_json = obtener_consulta_bd(con, consulta)
+    
+    if not info_json:
+        return jsonify({'Error_execucion': 'Error en la ejecucion del programa'}), 200
+    
+    print(info_json)
+    
     return jsonify({'Tokens': tokens_formateados,
-                    'Error': errores_formateados,
                     'Arbol_sintactico': arbol_formateado,
-                    'Error_sintactico': errores_sintacticos,
                     'Semantico': 'Sin errores semanticos',
-                    'Error_semantico': errores_semanticos}), 200
+                    'Informacion': info_json}), 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

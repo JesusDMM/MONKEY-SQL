@@ -3,25 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="/static/CSS/login.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.css') }}">
     <script>
       function validateForm() {
-        var email = document.getElementById("email").value;
+        event.preventDefault();
+        var direccion = document.getElementById("direccion").value;
         var password = document.getElementById("password").value;
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailPattern.test(email)) {
-          alert("Por favor, introduce un correo electrónico válido.");
-          return false;
-        }
-
+        var usuario = document.getElementById("usuario").value;
+        var bd = document.getElementById("base-de-datos").value;
+        /*
         if (password.length < 6) {
           alert("La contraseña debe tener al menos 6 caracteres.");
           return false;
         }
 
-        return true;
-      }
+        if (usuario.length > 20) {
+          alert("El nombre de usuario no puede tener mas de 20 caracteres.");
+          return false;
+        }
+
+        if (bd.length > 20) {
+          alert("El nombre de la base de datos no puede tener mas de 20 caracteres.");
+          return false;
+        }
+
+        if (direccion.length > 50) {
+          alert("La direccion de la base de datos no puede tener mas de 50 caracteres.");
+          return false;
+        }
+        */
+        const data = {
+            direccion: direccion,
+            usuario: usuario,
+            contra: password,
+            database: bd
+        };
+
+        fetch('/bd', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.Error){
+              alert(data.Error)
+              return
+            }
+            window.location.href = "{{ url_for('principal') }}";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
     </script>
     <style>
       .orange-text {
@@ -32,14 +68,14 @@
   <body>
     <div class="login-box">
       <p>Login to <span class="orange-text">MonkeySQL</span></p>
-      <form onsubmit="return validateForm()">
+      <form>
         <div class="user-box">
-          <input id="email" required="" name="email" type="text" />
+          <input id="direccion" required="" name="direccion" type="text" />
           <label>Dirección</label>
         </div>
 
         <div class="user-box">
-          <input required="" name="usuario" type="text" />
+          <input required="" name="usuario" id="usuario" type="text" />
           <label>Usuario</label>
         </div>
 
@@ -49,16 +85,12 @@
         </div>
 
         <div class="user-box">
-          <input required="" name="base-de-datos" type="text" />
+          <input required="" name="base-de-datos" id="base-de-datos" type="text" />
           <label>Base de datos</label>
         </div>
-        <a type="submit">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <button onclick="validateForm()">
           Entrar
-        </a>
+        </button>
       </form>
     </div>
   </body>
