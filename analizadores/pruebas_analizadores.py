@@ -1,13 +1,39 @@
 from analizador_lexico import *
 from Analizador_Sintactico_Consultas import *
-consulta = '''select id, id, id, max(id), max(id), avg(nombre) from usuarios
-           '''
+from analizador_semantico_pruebas import *
+'''
+'empleados': [
+                'CustomerID',
+                'CustomerName',
+                'ContactName',
+                'Address',
+                'City',
+                'PostalCode',
+                'Country'
+            ],
+            'productos': [
+                'ProductID',
+                'ProductName',
+                'SupplierID',
+                'CategoryID',
+                'Unit',
+                'Price'
+            ]
+        }
+'''
+consulta = '''SELECT Productid, sum(productid + 1) from productos, productos where productmid = 1 + 'ds' group_by productid, idsss
+'''
 tokens, errores, tok = tokenizar(consulta)
 arbol, errores_sintacticos = analizar_consulta(consulta)
+objeto = AnalizadorSemantico()
+analizador_semantico = objeto.analizar(arbol)    
+errores_semanticos = objeto.errores
 print(f'Tokens {tokens}')
 print(f'errores {errores}')
 print(f'arbol {arbol}')
 print(f'errores sintactivos {errores_sintacticos}')
+print(f'analizador semantico {analizador_semantico}')
+print(f'errores semanticos {errores_semanticos}')
 
 '''
 if len(p) == 2:

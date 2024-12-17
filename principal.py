@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from analizadores.analizador_lexico import *
 from analizadores.Analizador_Sintactico_Consultas import *
-from analizadores.analizador_semantico import AnalizadorSemantico
+from analizadores.analizador_semantico_Consultas import AnalizadorSemantico
 from database.main import *
 
 app = Flask(__name__, static_folder='static')
@@ -88,6 +88,7 @@ def analizador_lexico():
     arbol, errores_sintacticos = analizar_consulta(consulta)
     print(arbol)
     
+    print(f'errrores sintacticos en main 1 {errores_sintacticos}')
     if len(errores_sintacticos) > 0:
         return jsonify({'Error': errores_formateados,
                         'Error_sintactico': errores_sintacticos}), 200
@@ -100,14 +101,21 @@ def analizador_lexico():
     
     analizador_semantico.analizar(arbol)
     
-    errores_semanticos = analizador_semantico.obtener_errores()
+    errores_semanticos = analizador_semantico.errores
+    
+    print(f'errrores sintacticos en main 2 {errores_sintacticos}')
+    print(f'errrores semanticos en main 2 {errores_semanticos}')
     
     if len(errores_semanticos) > 0:
         return jsonify({'Error': errores_formateados,
                         'Error_sintactico': errores_sintacticos,
                         'Error_semantico': errores_semanticos}), 200
+    print('no paso pa')
+    consulta_final = consulta.replace("group_by", "group by")
+
+    print(consulta_final)
     
-    info_json = obtener_consulta_bd(con, consulta)
+    info_json = obtener_consulta_bd(con, consulta_final)
     
     if not info_json:
         return jsonify({'Error_execucion': 'Error en la ejecucion del programa'}), 200

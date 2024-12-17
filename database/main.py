@@ -1,6 +1,21 @@
 import json
 import mysql.connector
 from mysql.connector import errorcode
+from decimal import Decimal
+
+def mapear_tipo_dato(tipo_sql):
+    
+    if tipo_sql.startswith('int'):
+        return 'INT'
+    elif tipo_sql.startswith('varchar'):
+        return 'VARCHAR'
+    elif tipo_sql.startswith('float') or tipo_sql.startswith('double'):
+        return 'FLOAT'
+    elif tipo_sql.startswith('date'):
+        return 'DATE'
+    else:
+        return tipo_sql
+
 
 def conexion(direccion, usuario, contra, nombre_bd):
     conexion = None
@@ -22,28 +37,32 @@ def conexion(direccion, usuario, contra, nombre_bd):
             return conexion, False, "Direccion incorrecta de host"
 
 def obtener_estructura_bd(conexion):
-
+    """
+    Extrae la estructura de la base de datos con los tipos de datos mapeados.
+    """
     estructura_bd = {}
 
     try:
         cursor = conexion.cursor()
-        
         cursor.execute("SHOW TABLES")
         tablas = [tabla[0] for tabla in cursor.fetchall()]
 
         for tabla in tablas:
-            
             cursor.execute(f"DESCRIBE {tabla}")
-            columnas = [columna[0] for columna in cursor.fetchall()]
-
-            estructura_bd[tabla] = columnas
-
+            columnas = cursor.fetchall()
+            # Mapeamos los nombres de columna y sus tipos
+            estructura_bd[tabla] = [
+                (columna[0], mapear_tipo_dato(columna[1])) for columna in columnas
+            ]
     finally:
-        
         cursor.close()
-        #conexion.close()
 
     return estructura_bd
+
+def decimal_default(obj):
+    if isinstance(obj, Decimal):
+        return float(obj)  # Convertir Decimal a float
+    raise TypeError("Type not serializable")  # Lanza un error si no es un tipo serializable
 
 def obtener_consulta_bd(conexion, sql):
     json_data = None
@@ -60,12 +79,13 @@ def obtener_consulta_bd(conexion, sql):
             row_dict = dict(zip(column_names, row))
             resultados.append(row_dict)
 
-        # Convertir la lista de diccionarios a formato JSON
-        json_data = json.dumps(resultados)
+        # Convertir la lista de diccionarios a formato JSON usando 'default' para convertir Decimal
+        json_data = json.dumps(resultados, default=decimal_default)
 
         return json_data
     
-    except:
+    except Exception as e:
+        print(e)
         return json_data
 
     finally:

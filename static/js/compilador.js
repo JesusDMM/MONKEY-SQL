@@ -19,22 +19,22 @@ document.getElementById('boton_consulta').addEventListener('click', function () 
             return response.json();
         })
         .then(data => {
-            if (data.Error) {
+            if (data.Error && data.Error.length > 0) {
                 error_lexico = 'Error lexico: ' + data.Error
                 document.getElementById('sql-output').value = error_lexico;
                 return;
             }
-            if (data.Error_sintactico) {
+            if (data.Error_sintactico && data.Error_sintactico.length > 0) {
                 error_sintactico = 'Error sintactico: ' + data.Error_sintactico
                 document.getElementById('sql-output').value = error_sintactico;
                 return;
             }
-            if (data.Error_semantico) {
+            if (data.Error_semantico && data.Error_semantico.length > 0) {
                 error_semantico = 'Error semantico: ' + data.Error_semantico
                 document.getElementById('sql-output').value = error_semantico;
                 return;
             }
-            if (data.Error_execucion) {
+            if (data.Error_execucion && data.Error_execucion.length > 0) {
                 error_execucion = 'Error de execucion: ' + data.Error_execucion
                 document.getElementById('sql-output').value = error_execucion;
                 return;
