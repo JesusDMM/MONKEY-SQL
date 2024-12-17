@@ -23,11 +23,14 @@ def crear_parser():
                             | PALABRA_CLAVE_SELECT select_intermedio_funciones PALABRA_CLAVE_FROM from_individual
                             | PALABRA_CLAVE_SELECT select_intermedio PALABRA_CLAVE_FROM from_individual   
                             | PALABRA_CLAVE_SELECT select_finales_funciones PALABRA_CLAVE_FROM from_individual PALABRA_CLAVE_GROUP_BY datos_groupby
-                            | PALABRA_CLAVE_SELECT select_finales_funciones PALABRA_CLAVE_FROM from_individual PALABRA_CLAVE_WHERE where PALABRA_CLAVE_GROUP_BY datos_groupby
+                            | PALABRA_CLAVE_SELECT select_finales_funciones PALABRA_CLAVE_FROM from_individual PALABRA_CLAVE_WHERE where PALABRA_CLAVE_GROUP_BY datos_groupby PALABRA_CLAVE_HAVING datos_having
                             '''
         if len(p) == 7:
             print('7')
             p[0] = ['Consulta', p[2], p[4], p[6]]
+        if len(p) == 11:
+            print('11')
+            p[0] = ['Consulta', p[2], p[4], p[6], p[8], p[10]]
         if len(p) == 9:
             print('9')
             p[0] = ['Consulta', p[2], p[4], p[6], p[8]]
@@ -37,6 +40,16 @@ def crear_parser():
         elif len(p) == 3:
             print('3')
             p[0] = ['Consulta', p[2]]
+    
+    def p_datos_having(p):
+        '''datos_having : column_having '''
+        p[0] = ('Columnas_having', p[1])
+        #p[0] = [[p[1]] + p[4] if isinstance(p[4], list) else [p[1], p[4]]]
+    
+    def p_column_having(p):
+        '''column_having : Funcion_agregada COMPARADOR valores'''
+        p[0] = [p[1], p[3]]
+        #p[0] = [[p[1]] + p[4] if isinstance(p[4], list) else [p[1], p[4]]]
             
     def p_select_intermedio(p):
         '''select_intermedio : columnas'''
@@ -223,13 +236,12 @@ def crear_parser():
     def p_where(p):
         '''where : condicion_where'''
         print('where')
-        p[0] = ('Columnas_where', p[1])
+        p[0] = ('Columnas_where_subconsultas', p[1])
     
     def p_condicion_where(p):
-        '''condicion_where : ID IGUAL datos_where
-                        | ID COMPARADOR datos_where'''
-        
-        p[0] = [p[1]] + [flatten([flatten(p[3])] if isinstance(p[3], list) else [[flatten(p[3])]])]  # Guarda la columna y el valor no numérico
+        '''condicion_where : ID IGUAL PAR_IZQ PALABRA_CLAVE_SELECT select_intermedio_funciones PALABRA_CLAVE_FROM from_individual PAR_DER '''
+        p[0] = [p[1], p[5], p[7]]
+        #p[0] = [p[1]] + [flatten([flatten(p[3])] if isinstance(p[3], list) else [[flatten(p[3])]])]  # Guarda la columna y el valor no numérico
     
     def p_datos_where(p):
         '''datos_where : ID

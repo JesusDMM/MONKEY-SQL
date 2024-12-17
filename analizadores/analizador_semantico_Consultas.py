@@ -207,11 +207,12 @@ class AnalizadorSemantico:
                     else:
                         for tabla in self.tablas:
                             tabla = tabla.lower()
-                            columnas_tabla = [c[0].lower() for c in self.estructura_bd[tabla]]
+                            
                             if tabla not in [t.lower() for t in self.estructura_bd.keys()]:
                                 mensaje_error = f"La columna {columna} no puede existir en la tabla {tabla} por que la tabla no existe."
                                 self.errores.append(mensaje_error)
                             else:
+                                columnas_tabla = [c[0].lower() for c in self.estructura_bd[tabla]]
                                 if columna not in columnas_tabla:
                                     mensaje_error = f"La columna '{columna}' no existe en la tabla '{tabla}'."
                                     self.errores.append(mensaje_error)

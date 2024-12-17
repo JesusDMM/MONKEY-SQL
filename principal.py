@@ -71,7 +71,7 @@ def analizador_lexico():
     
     if consulta is None or consulta.strip() == "":
         return jsonify({"Errore": 'Consulta vacía'}), 400
-    
+
     tokens, errores, tok = tokenizar(consulta)
     
     errores_formateados = ''
